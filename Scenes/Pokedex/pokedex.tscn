@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://bttgf1b41ic28"]
+
+[ext_resource type="Script" path="res://Scenes/Pokedex/Pokedex.cs" id="1_3xxia"]
+[ext_resource type="Resource" uid="uid://b7lht8dfbpxgw" path="res://Resources/Database/MasterPokemonDb.tres" id="2_ondl5"]
+[ext_resource type="PackedScene" uid="uid://h85kb4sf36tt" path="res://Scenes/PokedexEntry/pokedex_entry.tscn" id="2_qqg62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4xuo"]
+bg_color = Color(0.917647, 0.843137, 0.733333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qesrf"]
+bg_color = Color(1, 0.94902, 0.847059, 1)
+
+[node name="Pokedex" type="Control" node_paths=PackedStringArray("EntryRoot", "ScrollContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3xxia")
+PokemonDatabase = ExtResource("2_ondl5")
+PokedexEntry = ExtResource("2_qqg62")
+EntryRoot = NodePath("HBoxContainer/Panel2/ScrollContainer/GridContainer")
+ScrollContainer = NodePath("HBoxContainer/Panel2/ScrollContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k4xuo")
+
+[node name="Panel2" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qesrf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Panel2"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="VBoxContainer" parent="HBoxContainer/Panel2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 28
+
+[node name="PokedexEntry2" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="PokedexEntry3" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="PokedexEntry4" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="PokedexEntry5" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="PokedexEntry6" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="PokedexEntry7" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="PokedexEntry8" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2
+
+[node name="PokedexEntry9" parent="HBoxContainer/Panel2/ScrollContainer/GridContainer" instance=ExtResource("2_qqg62")]
+texture_filter = 1
+layout_mode = 2

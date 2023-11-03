@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c211y6gpkw3ac"]
+
+[ext_resource type="Texture2D" uid="uid://c14yggop3gfx4" path="res://Art/Pokemon_front.png" id="1_opqco"]
+[ext_resource type="Script" path="res://src/Pokemon.cs" id="2_r8ush"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv1uv"]
+atlas = ExtResource("1_opqco")
+region = Rect2(280, 336, 56, 56)
+filter_clip = true
+
+[resource]
+script = ExtResource("2_r8ush")
+PokedexNumber = 3
+Name = "Venasuar"
+HP = 0
+Atk = 0
+Def = 0
+SpAtk = 0
+SpDef = 0
+Speed = 0
+PokedexImage = SubResource("AtlasTexture_wv1uv")

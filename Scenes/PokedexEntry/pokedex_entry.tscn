@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://h85kb4sf36tt"]
+
+[ext_resource type="Script" path="res://Scenes/PokedexEntry/PokedexEntry.cs" id="1_6opj0"]
+[ext_resource type="Texture2D" uid="uid://c5d2m5t3lfbyu" path="res://Art/Pokedex_icons.png" id="2_ba4sc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7e01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahvvn"]
+atlas = ExtResource("2_ba4sc")
+region = Rect2(9, 1, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jdcg"]
+atlas = ExtResource("2_ba4sc")
+region = Rect2(9, 9, 8, 8)
+
+[node name="HBoxContainer" type="HBoxContainer" node_paths=PackedStringArray("PokemonNumber", "PokemonName", "CapturedImg", "SelectionImg")]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+script = ExtResource("1_6opj0")
+PokemonNumber = NodePath("Pokedex Num")
+PokemonName = NodePath("Pokedex Name")
+CapturedImg = NodePath("Panel2/Captured")
+SelectionImg = NodePath("Panel/Selection")
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o7e01")
+
+[node name="Selection" type="TextureRect" parent="Panel"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ahvvn")
+stretch_mode = 5
+
+[node name="Panel2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o7e01")
+
+[node name="Captured" type="TextureRect" parent="Panel2"]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_0jdcg")
+stretch_mode = 5
+
+[node name="Pokedex Num" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "000"
+
+[node name="Pokedex Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "MissingNo"
+
+[node name="PokedexEntry" type="Control" parent="."]
+layout_mode = 2

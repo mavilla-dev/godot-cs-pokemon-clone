@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6gl87gmm0nyg"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_3tl5i"]
+[ext_resource type="PackedScene" uid="uid://6ccm1npgm8lx" path="res://Scenes/StartScreen/start_screen.tscn" id="2_tqqvc"]
+[ext_resource type="PackedScene" uid="uid://ddgsspgiht05f" path="res://Scenes/LoadGame/load_game.tscn" id="3_aok4t"]
+[ext_resource type="PackedScene" uid="uid://d0w7vrpc43hid" path="res://World/pallet_town/pallet_town_my_house_upper_room.tscn" id="4_upqlc"]
+[ext_resource type="PackedScene" uid="uid://be5dyjksrivi0" path="res://Scenes/Character/character.tscn" id="5_wiq6v"]
+[ext_resource type="PackedScene" uid="uid://cld14kcgtnn16" path="res://Scenes/StartMenu/start_menu.tscn" id="6_ltvem"]
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("ActiveSceneRoot", "GameUiRoot")]
+script = ExtResource("1_3tl5i")
+StartScreenScene = ExtResource("2_tqqvc")
+LoadGameScene = ExtResource("3_aok4t")
+StartingZoneScene = ExtResource("4_upqlc")
+CharacterScene = ExtResource("5_wiq6v")
+StartMenuScene = ExtResource("6_ltvem")
+ActiveSceneRoot = NodePath("ActiveScene")
+GameUiRoot = NodePath("GameUI")
+
+[node name="ActiveScene" type="Node" parent="."]
+
+[node name="GameUI" type="CanvasLayer" parent="."]

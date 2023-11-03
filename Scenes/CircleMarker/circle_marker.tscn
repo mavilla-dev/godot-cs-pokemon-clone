@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://uyel4idhlgh4"]
+
+[ext_resource type="Texture2D" uid="uid://dqgku7gbst0sl" path="res://Art/marker.png" id="1_ky1mj"]
+[ext_resource type="Script" path="res://Scenes/CircleMarker/Marker.cs" id="2_hag23"]
+
+[node name="Marker" type="Sprite2D"]
+modulate = Color(2.73383e-05, 0.945087, 0.385201, 1)
+position = Vector2(120, 24)
+texture = ExtResource("1_ky1mj")
+script = ExtResource("2_hag23")

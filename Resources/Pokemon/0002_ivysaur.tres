@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b5bslvvaxjnun"]
+
+[ext_resource type="Texture2D" uid="uid://c14yggop3gfx4" path="res://Art/Pokemon_front.png" id="1_8f4b2"]
+[ext_resource type="Script" path="res://src/Pokemon.cs" id="2_hb5en"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4r8h"]
+atlas = ExtResource("1_8f4b2")
+region = Rect2(0, 504, 56, 56)
+filter_clip = true
+
+[resource]
+script = ExtResource("2_hb5en")
+PokedexNumber = 2
+Name = "Ivysaur"
+HP = 0
+Atk = 0
+Def = 0
+SpAtk = 0
+SpDef = 0
+Speed = 0
+PokedexImage = SubResource("AtlasTexture_f4r8h")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpl2jc6ghimn3"]
+
+[ext_resource type="Texture2D" uid="uid://6abinxpfvtru" path="res://Art/cleaned_characters.png" id="1_6eq3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deed5"]
+atlas = ExtResource("1_6eq3v")
+region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hm8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deed5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Girl 1" type="AnimatedSprite2D"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_0hm8v")

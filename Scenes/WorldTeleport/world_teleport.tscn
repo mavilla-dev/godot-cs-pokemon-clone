@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgue60dsf7tme"]
+
+[ext_resource type="Script" path="res://src/WorldTeleport.cs" id="1_740od"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r64a"]
+size = Vector2(16, 16)
+
+[node name="WorldTeleport" type="Area2D"]
+script = ExtResource("1_740od")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_7r64a")

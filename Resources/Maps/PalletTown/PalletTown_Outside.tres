@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://botca4fpqrqty"]
+
+[ext_resource type="PackedScene" uid="uid://cirra8ngyjla5" path="res://World/pallet_town/pallet_town_outside.tscn" id="1_4fyso"]
+[ext_resource type="Script" path="res://src/MapResource.cs" id="1_o68ll"]
+
+[resource]
+script = ExtResource("1_o68ll")
+MapKey = 3
+MapScene = ExtResource("1_4fyso")

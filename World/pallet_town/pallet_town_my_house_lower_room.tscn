@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://g8snnqubyyag"]
+
+[ext_resource type="TileSet" uid="uid://ph17c5q88whb" path="res://Resources/Tilesets/master_tileset.tres" id="1_5t1gh"]
+[ext_resource type="Script" path="res://src/MapData.cs" id="2_qdhsb"]
+[ext_resource type="PackedScene" uid="uid://uyel4idhlgh4" path="res://Scenes/CircleMarker/circle_marker.tscn" id="3_6404c"]
+[ext_resource type="PackedScene" uid="uid://bgue60dsf7tme" path="res://Scenes/WorldTeleport/world_teleport.tscn" id="3_ctnn5"]
+
+[node name="TileMap" type="TileMap"]
+position = Vector2(24, 8)
+tile_set = ExtResource("1_5t1gh")
+format = 2
+layer_0/name = "walkable"
+layer_0/tile_data = PackedInt32Array(7, 196608, 0, 65536, 0, 2, 131072, 0, 2, 196608, 0, 2, 262144, 0, 2, 327680, 0, 2, 393216, 0, 2, 458752, 0, 2, 65537, 0, 2, 131073, 0, 2, 196609, 0, 2, 262145, 0, 2, 327681, 0, 2, 393217, 0, 2, 458753, 0, 2, 65538, 0, 2, 131074, 0, 2, 196610, 0, 2, 262146, 0, 2, 327682, 0, 2, 393218, 0, 2, 65539, 0, 2, 131075, 0, 2, 196611, 0, 2, 262147, 0, 2, 327683, 0, 2, 393219, 0, 2, 458755, 0, 1, 65540, 0, 2, 131076, 0, 2, 196612, 0, 2, 262148, 0, 2, 327684, 0, 2, 393220, 0, 2, 458756, 0, 2, 65541, 0, 2, 131077, 0, 2, 196613, 0, 2, 262149, 0, 2, 327685, 0, 2, 393221, 0, 2, 458757, 0, 2, 65542, 0, 2, 131078, 0, 2, 196614, 0, 2, 262150, 0, 2, 327686, 0, 2, 393222, 0, 2, 458758, 0, 2, 65543, 0, 2, 131079, 0, 2, 196615, 0, 2, 262151, 0, 2, 327687, 0, 2, 393223, 0, 2, 458759, 0, 2, 458754, 0, 1, 524290, 131072, 0, 524291, 131072, 0)
+layer_1/name = "walls"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(0, 0, 4, 1, 131072, 3, 2, 131072, 1, 3, 131072, 1, 4, 65536, 11, 5, 131072, 1, 6, 131072, 1, 65536, 196608, 3, 65537, 65536, 3, 65539, 131072, 11)
+script = ExtResource("2_qdhsb")
+
+[node name="Carpet" parent="." instance=ExtResource("3_6404c")]
+position = Vector2(56, 120)
+
+[node name="North Stairs" parent="." instance=ExtResource("3_6404c")]
+
+[node name="upstairs" parent="." node_paths=PackedStringArray("SpawnLocation") instance=ExtResource("3_ctnn5")]
+position = Vector2(120, 8)
+Key = 3
+SpawnLocation = NodePath("../North Stairs")
+TargetMap = 1
+TargetKey = 2
+
+[node name="outside left" parent="." node_paths=PackedStringArray("SpawnLocation") instance=ExtResource("3_ctnn5")]
+position = Vector2(40, 136)
+Key = 4
+SpawnLocation = NodePath("../Carpet")
+TargetMap = 3
+TargetKey = 5
+
+[node name="outside right" parent="." node_paths=PackedStringArray("SpawnLocation") instance=ExtResource("3_ctnn5")]
+position = Vector2(56, 136)
+Key = 4
+SpawnLocation = NodePath("../Carpet")
+TargetMap = 3
+TargetKey = 5

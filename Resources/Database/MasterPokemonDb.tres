@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://b7lht8dfbpxgw"]
+
+[ext_resource type="Resource" uid="uid://dhewbc6fdu6dd" path="res://Resources/Pokemon/0001_Bulbasaur.tres" id="1_6j3m5"]
+[ext_resource type="Resource" uid="uid://b5bslvvaxjnun" path="res://Resources/Pokemon/0002_ivysaur.tres" id="2_08qht"]
+[ext_resource type="Script" path="res://src/PokemonDatabase.cs" id="2_ovypx"]
+[ext_resource type="Resource" uid="uid://c211y6gpkw3ac" path="res://Resources/Pokemon/0003_venasaur.tres" id="3_86eo8"]
+[ext_resource type="Resource" uid="uid://c4516oc4k4swo" path="res://Resources/Pokemon/0004_charmander.tres" id="4_ip8gj"]
+[ext_resource type="Resource" uid="uid://6ejrgd1qtg10" path="res://Resources/Pokemon/0005_charmeleon.tres" id="5_mxrpt"]
+[ext_resource type="Resource" uid="uid://bug3kxnch6qvh" path="res://Resources/Pokemon/0006_charizard.tres" id="6_qdx4g"]
+[ext_resource type="Resource" uid="uid://bpjq8b61u60r6" path="res://Resources/Pokemon/0007_squirtle.tres" id="7_ah0rn"]
+[ext_resource type="Resource" uid="uid://u2wu6w5a1vu6" path="res://Resources/Pokemon/0008_wartortle.tres" id="8_8m7nw"]
+[ext_resource type="Resource" uid="uid://cvsf0mfs58yre" path="res://Resources/Pokemon/0009_blastoise.tres" id="9_iotkg"]
+[ext_resource type="Resource" uid="uid://cvjb3ofnv4aoe" path="res://Resources/Pokemon/0010_caterpie.tres" id="10_34aw7"]
+
+[resource]
+script = ExtResource("2_ovypx")
+Pokemon = Array[Resource]([ExtResource("1_6j3m5"), ExtResource("2_08qht"), ExtResource("3_86eo8"), ExtResource("4_ip8gj"), ExtResource("5_mxrpt"), ExtResource("6_qdx4g"), ExtResource("7_ah0rn"), ExtResource("8_8m7nw"), ExtResource("9_iotkg"), ExtResource("10_34aw7")])

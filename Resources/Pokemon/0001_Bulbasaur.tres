@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dhewbc6fdu6dd"]
+
+[ext_resource type="Script" path="res://src/Pokemon.cs" id="1_io4hq"]
+[ext_resource type="Texture2D" uid="uid://c14yggop3gfx4" path="res://Art/Pokemon_front.png" id="1_y72xn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3nxk"]
+atlas = ExtResource("1_y72xn")
+region = Rect2(0, 0, 56, 56)
+filter_clip = true
+
+[resource]
+script = ExtResource("1_io4hq")
+PokedexNumber = 1
+Name = "Bulbasaur"
+HP = 45
+Atk = 49
+Def = 49
+SpAtk = 65
+SpDef = 65
+Speed = 45
+PokedexImage = SubResource("AtlasTexture_l3nxk")

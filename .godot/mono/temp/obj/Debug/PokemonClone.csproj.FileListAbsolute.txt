@@ -1,0 +1,17 @@
+C:\src\godot\PokemonClone\.godot\mono\temp\bin\Debug\PokemonClone.deps.json
+C:\src\godot\PokemonClone\.godot\mono\temp\bin\Debug\PokemonClone.runtimeconfig.json
+C:\src\godot\PokemonClone\.godot\mono\temp\bin\Debug\PokemonClone.dll
+C:\src\godot\PokemonClone\.godot\mono\temp\bin\Debug\PokemonClone.pdb
+C:\src\godot\PokemonClone\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\src\godot\PokemonClone\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.csproj.AssemblyReference.cache
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.GeneratedMSBuildEditorConfig.editorconfig
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.AssemblyInfoInputs.cache
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.AssemblyInfo.cs
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.csproj.CoreCompileInputs.cache
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.csproj.CopyComplete
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.dll
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\refint\PokemonClone.dll
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.pdb
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\PokemonClone.genruntimeconfig.cache
+C:\src\godot\PokemonClone\.godot\mono\temp\obj\Debug\ref\PokemonClone.dll

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgv5pi047d013"]
+
+[ext_resource type="Script" path="res://Scenes/Selection/Selection.cs" id="1_jw11h"]
+[ext_resource type="Texture2D" uid="uid://c5d2m5t3lfbyu" path="res://Art/Pokedex_icons.png" id="2_as7sq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvnaw"]
+atlas = ExtResource("2_as7sq")
+region = Rect2(11, 1, 6, 7)
+
+[node name="HBoxContainer" type="HBoxContainer" node_paths=PackedStringArray("SelectionName", "TextureRect")]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -49.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw11h")
+SelectionName = NodePath("Label")
+TextureRect = NodePath("TextureRect")
+SelectionIconColor = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.227451, 0.227451, 0.227451, 1)
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_jvnaw")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.219608, 0.219608, 0.219608, 1)
+theme_override_font_sizes/font_size = 80
+text = "Item 1"
+vertical_alignment = 1

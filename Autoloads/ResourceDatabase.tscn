@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2bfgiclhgat3"]
+
+[ext_resource type="Script" path="res://Autoloads/ResourceDatabase.cs" id="1_ofjpb"]
+[ext_resource type="Resource" uid="uid://bdign4pureose" path="res://Resources/Maps/AllMaps.tres" id="2_4bqsn"]
+[ext_resource type="Resource" uid="uid://b7lht8dfbpxgw" path="res://Resources/Database/MasterPokemonDb.tres" id="3_sqawy"]
+
+[node name="ResourceDatabase" type="Node2D"]
+script = ExtResource("1_ofjpb")
+AllMaps = ExtResource("2_4bqsn")
+AllPokemon = ExtResource("3_sqawy")

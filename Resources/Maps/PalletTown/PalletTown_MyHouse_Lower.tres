@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://q6x5ea3koovi"]
+
+[ext_resource type="PackedScene" uid="uid://g8snnqubyyag" path="res://World/pallet_town/pallet_town_my_house_lower_room.tscn" id="1_x43wt"]
+[ext_resource type="Script" path="res://src/MapResource.cs" id="2_wqcay"]
+
+[resource]
+script = ExtResource("2_wqcay")
+MapKey = 2
+MapScene = ExtResource("1_x43wt")

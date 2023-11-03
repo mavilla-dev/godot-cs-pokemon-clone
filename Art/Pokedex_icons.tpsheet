@@ -1,0 +1,63 @@
+{
+	"textures": [
+		{
+			"image": "Pokedex_icons.png",
+			"size": {
+				"w": 64,
+				"h": 64
+			},
+			"sprites": [
+				{
+					"filename": "pokedex_habitat.png",
+					"region": {
+						"x": 1,
+						"y": 1,
+						"w": 8,
+						"h": 8
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "pokdex_cursor.png",
+					"region": {
+						"x": 11,
+						"y": 1,
+						"w": 5,
+						"h": 7
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "pokdex_pokeball.png",
+					"region": {
+						"x": 11,
+						"y": 10,
+						"w": 5,
+						"h": 5
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7",
+		"format": "RGBA8888",
+	}
+}

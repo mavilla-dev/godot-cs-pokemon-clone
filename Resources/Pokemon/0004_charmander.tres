@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c4516oc4k4swo"]
+
+[ext_resource type="Texture2D" uid="uid://c14yggop3gfx4" path="res://Art/Pokemon_front.png" id="1_3uap0"]
+[ext_resource type="Script" path="res://src/Pokemon.cs" id="2_fpnna"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja61b"]
+atlas = ExtResource("1_3uap0")
+region = Rect2(56, 728, 56, 56)
+filter_clip = true
+
+[resource]
+script = ExtResource("2_fpnna")
+PokedexNumber = 4
+Name = "Charmander"
+HP = 0
+Atk = 0
+Def = 0
+SpAtk = 0
+SpDef = 0
+Speed = 0
+PokedexImage = SubResource("AtlasTexture_ja61b")
