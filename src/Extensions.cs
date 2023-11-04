@@ -10,4 +10,13 @@ public static class GodotExtensions {
     control.Visible = true;
     control.ProcessMode = Node.ProcessModeEnum.Inherit;
   }
+
+  public static SaveDataController GetSaveDataManager(this Node node)
+    => node.GetNode<SaveDataController>("/root/SaveDataController");
+
+  public static PlayerGridMovementController GetPlayerGridMovementController(this Node node)
+    => node.GetNode<PlayerGridMovementController>("/root/PlayerGridMovementController");
+
+  public static ResourceDatabase GetResourceDatabase(this Node node)
+    => node.GetNode<ResourceDatabase>("/root/ResourceDatabase");
 }

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bpjq8b61u60r6"]
+[gd_resource type="Resource" script_class="Pokemon" load_steps=4 format=3 uid="uid://bpjq8b61u60r6"]
 
 [ext_resource type="Texture2D" uid="uid://c14yggop3gfx4" path="res://Art/Pokemon_front.png" id="1_lyb3p"]
 [ext_resource type="Script" path="res://src/Pokemon.cs" id="2_xvgs2"]

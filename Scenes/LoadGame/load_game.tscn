@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddgsspgiht05f"]
+[gd_scene load_steps=3 format=3 uid="uid://ddgsspgiht05f"]
 
 [ext_resource type="Script" path="res://Scenes/LoadGame/LoadGameScene.cs" id="1_g31w0"]
+[ext_resource type="PackedScene" uid="uid://b7re7ojxeakv0" path="res://Scenes/LoadGame/LoadGameSaveSlot/load_game_slot.tscn" id="2_51xxk"]
 
-[node name="Control" type="Control"]
+[node name="LoadGame" type="Control" node_paths=PackedStringArray("GameSlotRoot")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g31w0")
+LoadGameSlotScene = ExtResource("2_51xxk")
+GameSlotRoot = NodePath("MarginContainer/VBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -23,7 +26,15 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "New Game"
+theme_override_constants/separation = 16
+
+[node name="LoadGameSlot" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_51xxk")]
+layout_mode = 2
+
+[node name="LoadGameSlot2" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_51xxk")]
+layout_mode = 2
+
+[node name="LoadGameSlot3" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_51xxk")]
+layout_mode = 2

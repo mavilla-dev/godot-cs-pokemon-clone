@@ -16,6 +16,9 @@ public partial class StartMenu : Control {
   [Export] private Resource SelectItemResource;
   [Export] private Node SelectionRoot;
 
+  [ExportCategory("Sub-scenes")]
+  [Export] public Resource PokemonResource;
+
   private List<Selection> _options = new();
   private int _index;
 
@@ -62,20 +65,17 @@ public partial class StartMenu : Control {
       _index = Mathf.Clamp(_index - 1, 0, _options.Count - 1);
     }
 
-    if (ev.IsActionPressed(Constants.InputActions.CANCEL)) {
+    if (ev.IsActionPressed(Constants.InputActions.CANCEL)
+      || ev.IsActionPressed(Constants.InputActions.START)) {
       GD.Print("Emitting close");
       EmitSignal(SignalName.OnClose);
+      _index = 0;
     }
 
     if (ev.IsActionPressed(Constants.InputActions.ACCEPT)) {
       var option = _optionDict.ElementAt(_index).Value;
       GD.Print("Emitting option " + option);
       EmitSignal(SignalName.OnOptionSelected, (int)option);
-    }
-
-    if (ev.IsActionPressed(Constants.InputActions.START)) {
-      GD.Print("Emitting close");
-      EmitSignal(SignalName.OnClose);
     }
 
     _options[_index].IsSelected(true);

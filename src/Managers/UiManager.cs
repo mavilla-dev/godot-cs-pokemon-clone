@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public class UiManager {
@@ -18,8 +19,16 @@ public class UiManager {
     ClearActiveUi();
 
     var packedScene = GD.Load<PackedScene>(resource.ResourcePath);
-    var startScreen = packedScene.Instantiate<T>();
-    _root.AddChild(startScreen);
-    return startScreen;
+    var instance = packedScene.Instantiate<T>();
+    _root.AddChild(instance);
+    return instance;
+  }
+
+  internal T AddUi<T>(Resource resource) where T : Node {
+    var packedScene = GD.Load<PackedScene>(resource.ResourcePath);
+    var instance = packedScene.Instantiate<T>();
+    _root.AddChild(instance);
+
+    return instance;
   }
 }

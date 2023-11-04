@@ -1,0 +1,122 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7re7ojxeakv0"]
+
+[ext_resource type="Script" path="res://Scenes/LoadGame/LoadGameSaveSlot/LoadGameSlot.cs" id="1_4tj7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocil3"]
+bg_color = Color(0.45098, 0.733333, 0.788235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56me3"]
+bg_color = Color(0.945098, 0.831373, 0.898039, 1)
+
+[node name="LoadGameSlot" type="Control" node_paths=PackedStringArray("SlotNumber", "TrainerName", "TimePlayed", "BadgeCount", "PokedexCount", "CaughtCount", "ExistingDataRoot", "NewGameRoot")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_4tj7m")
+SlotNumber = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Slot Highlight/MarginContainer/Slot Number")
+TrainerName = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Trainer Name")
+TimePlayed = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Game Time")
+BadgeCount = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Badges")
+PokedexCount = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Pokdex")
+CaughtCount = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Caught")
+ExistingDataRoot = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data")
+NewGameRoot = NodePath("MarginContainer/Background/MarginContainer/New Game")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Background" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ocil3")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Background"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Slot Highlight" type="PanelContainer" parent="MarginContainer/Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_56me3")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Slot Highlight"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Slot Number" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Slot Highlight/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
+theme_override_font_sizes/font_size = 44
+text = "Slot 1"
+
+[node name="Existing Data" type="VBoxContainer" parent="MarginContainer/Background/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Trainer Name" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
+theme_override_font_sizes/font_size = 32
+text = "Trainer: Unknown"
+vertical_alignment = 1
+
+[node name="Game Time" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
+theme_override_font_sizes/font_size = 24
+text = "Time Played: 00:00"
+vertical_alignment = 1
+
+[node name="Badges" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
+theme_override_font_sizes/font_size = 32
+text = "Badges: 0"
+vertical_alignment = 1
+
+[node name="Pokdex" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
+theme_override_font_sizes/font_size = 32
+text = "Pokdex: 10"
+vertical_alignment = 1
+
+[node name="Caught" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
+theme_override_font_sizes/font_size = 32
+text = "Caught: 1"
+vertical_alignment = 1
+
+[node name="New Game" type="CenterContainer" parent="MarginContainer/Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Background/MarginContainer/New Game"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
+theme_override_font_sizes/font_size = 60
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1

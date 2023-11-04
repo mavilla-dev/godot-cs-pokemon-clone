@@ -1,5 +1,6 @@
 using Godot;
 
+[GlobalClass]
 public partial class Pokemon : Resource
 {
   [Export] public int PokedexNumber { get; set; }

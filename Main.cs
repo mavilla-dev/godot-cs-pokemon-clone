@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Main : Node2D {
@@ -7,6 +8,9 @@ public partial class Main : Node2D {
   [Export] public Resource StartingZoneScene { get; set; }
   [Export] public Resource CharacterScene { get; set; }
   [Export] public Resource StartMenuScene { get; set; }
+
+  [ExportGroup("StartMenu Sub-scenes")]
+  [Export] public Resource StartMenuPokemon { get; set; }
 
   [ExportGroup("Nodes")]
   [Export] public Node ActiveSceneRoot { get; set; }
@@ -76,11 +80,20 @@ public partial class Main : Node2D {
     startMenuNode.HideControl();
     MoveController.StartMenu = startMenuNode;
     startMenuNode.OnClose += MoveController.HandleClosingStartMenu;
+    startMenuNode.OnOptionSelected += HandleStartMenuOptionSelected;
 
     var charNode = MakeResource<Character>(CharacterScene);
     AddChild(charNode);
     MoveController.Character = charNode;
   }
+
+  private void HandleStartMenuOptionSelected(int startMenuOption) {
+    StartMenuOption option = (StartMenuOption)startMenuOption;
+    if (option == StartMenuOption.Pokemon) {
+      _uiManager.AddUi<StartMenuPokemon>(StartMenuPokemon);
+    }
+  }
+
 
   private void HandleNewGameSetup() {
     _gameWorldManager.SwapGameScene(StartingZoneScene, TeleportKey.PalletTown_MyHouse_InitialSpawn);
@@ -95,10 +108,10 @@ public partial class Main : Node2D {
   #region AutoLoads
 
   private PlayerGridMovementController MoveController
-    => GetNode<PlayerGridMovementController>("/root/PlayerGridMovementController");
+    => this.GetPlayerGridMovementController();
 
   private ResourceDatabase Database
-    => GetNode<ResourceDatabase>("/root/ResourceDatabase");
+    => this.GetResourceDatabase();
 
   #endregion AutoLoads
 

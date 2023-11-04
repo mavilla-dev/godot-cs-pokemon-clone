@@ -1,3 +1,7 @@
+res://Scenes/LoadGame/LoadGameSaveSlot
+res://Scenes/TextBox
+res://Autoloads
+res://Scenes/StartMenuPokemon
 res://Art
 res://Scenes/Selection
 res://Scenes/BattleScene
@@ -9,7 +13,6 @@ res://Resources/Fonts
 res://src
 res://Scenes/StartMenu
 res://Resources/Maps/PalletTown
-res://Autoloads
 res://DebugTools
 res://Scenes/Character
 res://Scenes/WorldTeleport
@@ -17,6 +20,3 @@ res://Scenes/CircleMarker
 res://Resources/Tilesets
 res://Resources/Atlas
 res://
-res://Scenes/LoadGame
-res://Scenes
-res://Fonts/Gabarito
