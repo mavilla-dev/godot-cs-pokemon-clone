@@ -11,6 +11,16 @@ public partial class LoadGameSlot : Control {
   [Export] private Control ExistingDataRoot;
   [Export] private Control NewGameRoot;
 
+  [Export] private TextureRect SelectionArrow;
+  [Export] private Color White;
+  [Export] private Color Transparent;
+
+  public void SetSelected(bool isSelected) {
+    SelectionArrow.Modulate = isSelected
+      ? White
+      : Transparent;
+  }
+
   public void SetNewGameView() {
     ExistingDataRoot.HideControl();
     NewGameRoot.ShowControl();

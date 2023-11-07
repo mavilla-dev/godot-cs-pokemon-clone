@@ -8,6 +8,7 @@ public partial class PlayerGridMovementController : Node {
   public TileMap ActiveTileMap { get; set; }
   public Character Character { get; set; }
   public StartMenu StartMenu { get; set; }
+  public MapData MapData { get; set; }
   #endregion
 
   public bool IsCharacterMoving { get; private set; } = false;
@@ -19,7 +20,7 @@ public partial class PlayerGridMovementController : Node {
   private Vector2 _targetPosition;
   private int _moveSpeed = WALK_SPEED;
   private MoveDirection _lastDirection;
-  private bool _isMovementDisabled = false;
+  private bool _isMovementDisabled = true;
 
   #region Lifecycle
 
@@ -42,7 +43,7 @@ public partial class PlayerGridMovementController : Node {
 
     // Toggle Start Menu
     if (ev.IsActionPressed(Constants.InputActions.START)) {
-        StartMenu.ShowControl();
+      StartMenu.ShowControl();
       _isMovementDisabled = true;
     }
   }
@@ -93,6 +94,11 @@ public partial class PlayerGridMovementController : Node {
       _targetPosition, (float)(_moveSpeed * delta));
   }
 
+  public Vector2I GetGlobalPlayerGridLocation() {
+    var localMapPosition = ActiveTileMap.ToLocal(Character.GlobalPosition);
+    return ActiveTileMap.LocalToMap(localMapPosition);
+  }
+
   private void CalculateNextMove(MoveDirection direction) {
     Vector2 movement = GetMoveVector(direction);
     var globalCharEndPosition = Character.GlobalPosition + (movement * ActiveTileMap.Scale * ActiveTileMap.CellQuadrantSize);
@@ -139,6 +145,4 @@ public partial class PlayerGridMovementController : Node {
 
     return Vector2.Zero;
   }
-
-
 }

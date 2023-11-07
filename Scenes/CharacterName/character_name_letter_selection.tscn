@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfgqrcscftkhw"]
+
+[ext_resource type="Script" path="res://Scenes/CharacterName/CharacterNameLetterSelection.cs" id="1_0ee0w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4trjo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxyxl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfwy6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Letter Selection" type="Button"]
+theme_override_colors/font_color = Color(0.301961, 0.301961, 0.301961, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_4trjo")
+text = "A"
+script = ExtResource("1_0ee0w")
+Highlight = SubResource("StyleBoxFlat_qxyxl")
+Empty = SubResource("StyleBoxFlat_qfwy6")

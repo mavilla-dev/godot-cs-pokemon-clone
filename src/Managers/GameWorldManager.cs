@@ -14,10 +14,16 @@ public class GameWorldManager {
     ResourceDatabase database) {
     _root = root;
     _moveController = moveController;
-    _mapDatabase = database.AllMaps;
+    _mapDatabase = database.MapDb;
   }
 
-  public void SwapGameScene(Resource mapResource, TeleportKey targetKey) {
+  public void SwapGameScene(MapName mapName, TeleportKey targetKey) {
+    Resource mapResource = _mapDatabase.Maps.FirstOrDefault(x => x.MapKey == mapName);
+    if (mapResource == null) {
+      GD.PrintErr("Map could not be found: " + mapName);
+      return;
+    }
+
     _moveController.Character.ProcessMode = ProcessModeEnum.Disabled;
     ClearActiveMap();
 
@@ -41,10 +47,10 @@ public class GameWorldManager {
   }
 
   private async void HandleRequestTeleport(int targetMap, int targetKey) {
-    MapName mapKey = (MapName)targetMap;
+    MapName mapName = (MapName)targetMap;
     TeleportKey teleportKey = (TeleportKey)targetKey;
 
-    if (mapKey == MapName.None || teleportKey == TeleportKey.None) {
+    if (mapName == MapName.None || teleportKey == TeleportKey.None) {
       return;
     }
 
@@ -53,12 +59,6 @@ public class GameWorldManager {
       await _root.ToSignal(_moveController, nameof(_moveController.OnFinishedMoving));
     }
 
-    MapResource map = _mapDatabase.Maps.FirstOrDefault(x => x.MapKey == mapKey);
-    if (map == null) {
-      GD.PrintErr("Could not find map with key: " + mapKey);
-      return;
-    }
-
-    SwapGameScene(map.MapScene, teleportKey);
+    SwapGameScene(mapName, teleportKey);
   }
 }

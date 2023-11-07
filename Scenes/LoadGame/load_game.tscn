@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://b7re7ojxeakv0" path="res://Scenes/LoadGame/LoadGameSaveSlot/load_game_slot.tscn" id="2_51xxk"]
 
 [node name="LoadGame" type="Control" node_paths=PackedStringArray("GameSlotRoot")]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2

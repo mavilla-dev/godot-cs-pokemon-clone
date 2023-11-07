@@ -1,3 +1,5 @@
+res://
+res://Scenes/CharacterName
 res://Scenes/LoadGame/LoadGameSaveSlot
 res://Scenes/TextBox
 res://Autoloads
@@ -18,5 +20,3 @@ res://Scenes/Character
 res://Scenes/WorldTeleport
 res://Scenes/CircleMarker
 res://Resources/Tilesets
-res://Resources/Atlas
-res://

@@ -1,6 +1,6 @@
-using System.Collections.Generic;
+using System;
 using Godot;
 
 public partial class SaveDataFile : Resource {
-  public List<SaveData> SaveSlots = new();
+  [Export] public SaveData[] SaveSlots = Array.Empty<SaveData>();
 }

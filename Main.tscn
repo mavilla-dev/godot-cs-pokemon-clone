@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6gl87gmm0nyg"]
+[gd_scene load_steps=9 format=3 uid="uid://b6gl87gmm0nyg"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_3tl5i"]
 [ext_resource type="PackedScene" uid="uid://6ccm1npgm8lx" path="res://Scenes/StartScreen/start_screen.tscn" id="2_tqqvc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://be5dyjksrivi0" path="res://Scenes/Character/character.tscn" id="5_wiq6v"]
 [ext_resource type="PackedScene" uid="uid://cld14kcgtnn16" path="res://Scenes/StartMenu/start_menu.tscn" id="6_ltvem"]
 [ext_resource type="PackedScene" uid="uid://dcadi2pvawst" path="res://Scenes/StartMenuPokemon/start_menu_pokemon.tscn" id="7_6celf"]
+[ext_resource type="PackedScene" uid="uid://dkkkjgk1cna85" path="res://Scenes/CharacterName/character_name.tscn" id="7_jmy23"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("ActiveSceneRoot", "GameUiRoot")]
 script = ExtResource("1_3tl5i")
@@ -15,6 +16,7 @@ LoadGameScene = ExtResource("3_aok4t")
 StartingZoneScene = ExtResource("4_upqlc")
 CharacterScene = ExtResource("5_wiq6v")
 StartMenuScene = ExtResource("6_ltvem")
+CharacterNameScene = ExtResource("7_jmy23")
 StartMenuPokemon = ExtResource("7_6celf")
 ActiveSceneRoot = NodePath("ActiveScene")
 GameUiRoot = NodePath("GameUI")

@@ -7,6 +7,7 @@ public enum StartMenuOption {
   Save,
   Items,
   Stats,
+  Quit,
 }
 
 public partial class StartMenu : Control {
@@ -27,6 +28,7 @@ public partial class StartMenu : Control {
     { "Items", StartMenuOption.Items},
     { "Stats", StartMenuOption.Stats},
     { "Save", StartMenuOption.Save},
+    { "Quit", StartMenuOption.Quit},
   };
 
   public override void _Ready() {
