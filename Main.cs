@@ -20,7 +20,7 @@ public partial class Main : Node2D {
   private UiManager _uiManager;
 
   public override void _Ready() {
-    _gameWorldManager = new GameWorldManager(ActiveSceneRoot, MoveController, Database);
+    _gameWorldManager = new GameWorldManager(ActiveSceneRoot, MoveController, Database, MapController);
     _uiManager = new UiManager(GameUiRoot);
 
     LoadStartScreenScene();
@@ -66,6 +66,7 @@ public partial class Main : Node2D {
     var slotExists = SaveController.GetSaveSlots().Any(x => x.SaveSlotId == saveSlotIndex);
 
     if (slotExists) {
+      SaveController.SelectedSaveSlotIndex = saveSlotIndex;
       HandleLoadedGameSetup();
     } else {
       SaveController.PopulateSlot(saveSlotIndex);
@@ -103,20 +104,22 @@ public partial class Main : Node2D {
     }
   }
 
-
   private void HandleNewGameSetup() {
     var scene = _uiManager.SwapUi<CharacterNameScene>(CharacterNameScene);
     scene.TreeExited += () => {
       SetupCharacterNode();
-      AllowCharacterMovement();
       _gameWorldManager.SwapGameScene(
         MapName.PalletTown_MyHouse_UpperLevel,
         TeleportKey.PalletTown_MyHouse_InitialSpawn);
+      AllowCharacterMovement();
     };
   }
 
   private void HandleLoadedGameSetup() {
-    //todo
+    var saveData = SaveController.GetActiveSave();
+    SetupCharacterNode();
+    _gameWorldManager.SwapGameScene(saveData.ActiveMap, saveData.PlayerGridLocation);
+    AllowCharacterMovement();
   }
 
   #endregion Load Game Scene
@@ -131,8 +134,10 @@ public partial class Main : Node2D {
 
   private MapResource[] MapDatabase => this.GetResourceDatabase().MapDb.Maps;
 
-  private SaveDataController SaveController
+  private ISaveController SaveController
     => this.GetSaveDataManager();
+
+  private ITileMapController MapController => this.GetTileMapController();
 
   #endregion AutoLoads
 

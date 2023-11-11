@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b2jxdnfyh3j3"]
+
+[ext_resource type="Texture2D" uid="uid://d1lxie617hi0g" path="res://Art/all_pokemon.png" id="1_5ve7d"]
+
+[resource]
+atlas = ExtResource("1_5ve7d")
+region = Rect2(1208, 4718, 16, 16)
+filter_clip = true

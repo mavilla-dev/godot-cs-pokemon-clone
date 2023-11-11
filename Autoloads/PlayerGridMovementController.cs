@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Godot;
 
 public partial class PlayerGridMovementController : Node {
@@ -21,6 +23,7 @@ public partial class PlayerGridMovementController : Node {
   private int _moveSpeed = WALK_SPEED;
   private MoveDirection _lastDirection;
   private bool _isMovementDisabled = true;
+  private bool _checkForItem = false;
 
   #region Lifecycle
 
@@ -31,6 +34,15 @@ public partial class PlayerGridMovementController : Node {
 
   public override void _UnhandledInput(InputEvent ev) {
     HandleOverworldActions(ev);
+  }
+
+  public override void _PhysicsProcess(double delta) {
+    if (!_checkForItem) return;
+    // this is a space check so there should only be 1 thing to collide with at a time
+    var thing = Character.ShapeCast2D.GetCollider(0) as TileMapItem;
+    thing?.Activate();
+
+    _checkForItem = false;
   }
 
   public void HandleClosingStartMenu() {
@@ -76,6 +88,9 @@ public partial class PlayerGridMovementController : Node {
     } else {
       _moveSpeed = WALK_SPEED;
     }
+    if (Input.IsActionJustPressed(Constants.InputActions.ACCEPT)) {
+      _checkForItem = true;
+    }
   }
 
   private void MoveTowardsTargetPosition(double delta) {
@@ -87,6 +102,8 @@ public partial class PlayerGridMovementController : Node {
       IsCharacterMoving = false;
       EmitSignal(SignalName.OnFinishedMoving);
       Character.AnimateIdle(_lastDirection);
+      Character.ShapeCast2D.GlobalPosition = Character.GlobalPosition
+        + (GetMoveVector(_lastDirection) * ActiveTileMap.Scale * ActiveTileMap.CellQuadrantSize);
       return;
     }
 

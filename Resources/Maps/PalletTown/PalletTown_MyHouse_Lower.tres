@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("2_wqcay")
-MapKey = 2
+MapName = 2
 MapScene = ExtResource("1_x43wt")

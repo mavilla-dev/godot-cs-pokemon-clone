@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PokemonItem" load_steps=2 format=3 uid="uid://cq5tkp3s6aeky"]
+
+[ext_resource type="Script" path="res://src/PokemonItem.cs" id="1_y4t4h"]
+
+[resource]
+script = ExtResource("1_y4t4h")
+RemoveTile = true
+TileLayer = 1

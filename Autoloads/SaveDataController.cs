@@ -1,7 +1,16 @@
 using System.Linq;
 using Godot;
 
-public partial class SaveDataController : Node {
+public interface ISaveController {
+  public int SelectedSaveSlotIndex { get; set; }
+  public SaveData[] GetSaveSlots();
+  public void SavePlayerName(string trainerName);
+  public bool SaveGame();
+  public void PopulateSlot(int saveSlotIndex);
+  public SaveData GetActiveSave();
+}
+
+public partial class SaveDataController : Node, ISaveController {
   private const string SAVE_LOCATION = "user://savegame.res";
   [Export] private SaveDataFile _saveFile = new();
 
@@ -22,14 +31,14 @@ public partial class SaveDataController : Node {
   public bool SaveGame() {
     var activeSave = GetActiveSave();
     activeSave.PlayerGridLocation = this.GetPlayerGridMovementController().GetGlobalPlayerGridLocation();
-    // activeSave.ActiveMap = this.
+    activeSave.ActiveMap = this.GetTileMapController().MapName;
 
     var saveEr = ResourceSaver.Save(_saveFile, SAVE_LOCATION);
     GD.Print("Saving Game Says:" + saveEr);
     return saveEr == Error.Ok;
   }
 
-  internal void PopulateSlot(int saveSlotIndex) {
+  public void PopulateSlot(int saveSlotIndex) {
     SelectedSaveSlotIndex = saveSlotIndex;
     _saveFile.SaveSlots = _saveFile.SaveSlots.Append(
       new SaveData {
@@ -37,17 +46,17 @@ public partial class SaveDataController : Node {
       }).ToArray();
   }
 
-  #region Private
-
-  private SaveData TestSave = new();
-
-  private SaveData GetActiveSave() {
+  public SaveData GetActiveSave() {
     if (SelectedSaveSlotIndex == -1) {
       return TestSave;
     }
 
     return _saveFile.SaveSlots.First(x => x.SaveSlotId == SelectedSaveSlotIndex);
   }
+
+  #region Private
+
+  private SaveData TestSave = new();
 
   private SaveDataFile LoadGame() {
     return ResourceLoader.Load<SaveDataFile>(SAVE_LOCATION);

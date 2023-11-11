@@ -1,6 +1,8 @@
 using Godot;
 
 public partial class Character : Node2D {
+  [Export] public ShapeCast2D ShapeCast2D;
+
   [Export] private AnimatedSprite2D _animator;
 
   public override void _Ready() {

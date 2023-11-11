@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://mlnaxrilluy8"]
+
+[ext_resource type="FontFile" uid="uid://dyvkrbvpcu2fh" path="res://Fonts/Sometype_Mono/SometypeMono-VariableFont_wght.ttf" id="1_6s0ql"]
+
+[resource]
+base_font = ExtResource("1_6s0ql")

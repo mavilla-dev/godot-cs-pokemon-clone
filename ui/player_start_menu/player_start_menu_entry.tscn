@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://3mk0hh1atplk"]
+
+[ext_resource type="Script" path="res://ui/player_start_menu/PlayerStartMenuEntry.cs" id="1_ekuv0"]
+[ext_resource type="Texture2D" uid="uid://c5d2m5t3lfbyu" path="res://Art/Pokedex_icons.png" id="2_yerpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7og4"]
+atlas = ExtResource("2_yerpq")
+region = Rect2(11, 1, 5, 7)
+filter_clip = true
+
+[node name="Entry" type="Control"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_ekuv0")
+EntryText = "Pokemon"
+metadata/EntryName = NodePath("MarginContainer/HBoxContainer/Label")
+metadata/SelectArrow = NodePath("MarginContainer/HBoxContainer/TextureRect")
+
+[node name="Testing Only" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+clip_children = 1
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_o7og4")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.227451, 0.227451, 0.215686, 1)
+theme_override_font_sizes/font_size = 80
+text = "Pokemon"
+horizontal_alignment = 1
+vertical_alignment = 1

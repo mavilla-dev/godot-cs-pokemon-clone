@@ -19,4 +19,10 @@ public static class GodotExtensions {
 
   public static ResourceDatabase GetResourceDatabase(this Node node)
     => node.GetNode<ResourceDatabase>("/root/ResourceDatabase");
+
+  public static TileMapController GetTileMapController(this Node node)
+    => node.GetNode<TileMapController>("/root/TileMapController");
+
+  public static IPokemonController GetPokemonController(this Node node)
+    => node.GetNode<PokemonController>("/root/PokemonController");
 }

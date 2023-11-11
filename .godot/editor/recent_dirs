@@ -1,10 +1,15 @@
+res://ui/player_start_menu
+res://Fonts/Sometype_Mono
+res://Art
+res://Scenes/Pokemon Belt Entry
+res://Autoloads
+res://Scenes/PokeballItem
+res://Resources/Items
 res://
 res://Scenes/CharacterName
 res://Scenes/LoadGame/LoadGameSaveSlot
 res://Scenes/TextBox
-res://Autoloads
 res://Scenes/StartMenuPokemon
-res://Art
 res://Scenes/Selection
 res://Scenes/BattleScene
 res://Scenes/Npc/NpcSprites
@@ -15,8 +20,3 @@ res://Resources/Fonts
 res://src
 res://Scenes/StartMenu
 res://Resources/Maps/PalletTown
-res://DebugTools
-res://Scenes/Character
-res://Scenes/WorldTeleport
-res://Scenes/CircleMarker
-res://Resources/Tilesets

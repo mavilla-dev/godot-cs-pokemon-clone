@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://be5dyjksrivi0"]
+[gd_scene load_steps=20 format=3 uid="uid://be5dyjksrivi0"]
 
 [ext_resource type="Script" path="res://Scenes/Character/Character.cs" id="1_d2d87"]
 [ext_resource type="Texture2D" uid="uid://cn2t8hgea75uf" path="res://Art/MainCharacterBoy.png" id="1_ltru7"]
@@ -147,8 +147,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cscje"]
 size = Vector2(8, 8)
 
-[node name="Character" type="Node2D" node_paths=PackedStringArray("_animator")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp3jy"]
+size = Vector2(15, 15)
+
+[node name="Character" type="Node2D" node_paths=PackedStringArray("ShapeCast2D", "_animator")]
 script = ExtResource("1_d2d87")
+ShapeCast2D = NodePath("ShapeCast2D")
 _animator = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -162,3 +166,10 @@ animation = &"idle_down"
 shape = SubResource("RectangleShape2D_cscje")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_kp3jy")
+target_position = Vector2(0, 0)
+max_results = 4
+collide_with_areas = true
+collide_with_bodies = false

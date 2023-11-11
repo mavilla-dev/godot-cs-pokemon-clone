@@ -1,4 +1,4 @@
+Resource
 SpriteFrames
 FontFile
-Resource
 AtlasTexture

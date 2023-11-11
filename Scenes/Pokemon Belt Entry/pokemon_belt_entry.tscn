@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://kojix4eg5516"]
+
+[ext_resource type="Script" path="res://Scenes/Pokemon Belt Entry/PokemonBeltEntry.cs" id="1_4kvqf"]
+[ext_resource type="Texture2D" uid="uid://c5d2m5t3lfbyu" path="res://Art/Pokedex_icons.png" id="1_dolpn"]
+[ext_resource type="Texture2D" uid="uid://b2jxdnfyh3j3" path="res://Art/all_pokemon.tres" id="2_xyasr"]
+[ext_resource type="Texture2D" uid="uid://boskh7u8c2sqn" path="res://Art/hpbar.png" id="4_4dbds"]
+[ext_resource type="FontVariation" uid="uid://mlnaxrilluy8" path="res://Fonts/Sometype_Mono/sometype_mono.tres" id="4_5avaw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhjfj"]
+atlas = ExtResource("1_dolpn")
+region = Rect2(11, 1, 5, 7)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ogut"]
+bg_color = Color(0, 0.890196, 0.196078, 1)
+
+[node name="Pokemon Belt Entry" type="Control" node_paths=PackedStringArray("SelectionArrow", "PokemonIcon", "LabelMaxHealth", "LabelActiveHealth", "LabelPokemonName")]
+clip_contents = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_4kvqf")
+SelectionArrow = NodePath("HBoxContainer/Selection Arrow")
+PokemonIcon = NodePath("HBoxContainer/Pokemon Icon")
+LabelMaxHealth = NodePath("HBoxContainer/VBoxContainer2/Top Row/Max")
+LabelActiveHealth = NodePath("HBoxContainer/VBoxContainer2/Top Row/HP Value")
+LabelPokemonName = NodePath("HBoxContainer/Pokemon Name")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Selection Arrow" type="TextureRect" parent="HBoxContainer"]
+modulate = Color(0.0862745, 0.0862745, 0.0862745, 1)
+clip_children = 2
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_xhjfj")
+stretch_mode = 5
+
+[node name="Pokemon Icon" type="TextureRect" parent="HBoxContainer"]
+modulate = Color(0.576471, 0.733333, 0.92549, 1)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_xyasr")
+stretch_mode = 5
+
+[node name="Pokemon Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_font_sizes/font_size = 80
+text = "Pokemon"
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Top Row" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="HP Value" type="Label" parent="HBoxContainer/VBoxContainer2/Top Row"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("4_5avaw")
+theme_override_font_sizes/font_size = 60
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Seperator" type="Label" parent="HBoxContainer/VBoxContainer2/Top Row"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("4_5avaw")
+theme_override_font_sizes/font_size = 60
+text = "/"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Max" type="Label" parent="HBoxContainer/VBoxContainer2/Top Row"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("4_5avaw")
+theme_override_font_sizes/font_size = 60
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Bottom Row" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/Bottom Row"]
+layout_mode = 2
+
+[node name="Lv Label" type="Label" parent="HBoxContainer/VBoxContainer2/Bottom Row/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("4_5avaw")
+theme_override_font_sizes/font_size = 60
+text = "Lv:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Lv Value" type="Label" parent="HBoxContainer/VBoxContainer2/Bottom Row/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("4_5avaw")
+theme_override_font_sizes/font_size = 60
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Container" type="PanelContainer" parent="HBoxContainer/VBoxContainer2/Bottom Row/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/VBoxContainer2/Bottom Row/HBoxContainer/Container"]
+layout_mode = 2
+texture = ExtResource("4_4dbds")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/Bottom Row/HBoxContainer/Container"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 118
+theme_override_constants/margin_right = 30
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer2/Bottom Row/HBoxContainer/Container/MarginContainer"]
+custom_minimum_size = Vector2(0, 43)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_0ogut")
+step = 1.0
+value = 100.0
+show_percentage = false

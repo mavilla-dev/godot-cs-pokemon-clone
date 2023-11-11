@@ -6,5 +6,5 @@
 
 [node name="ResourceDatabase" type="Node2D"]
 script = ExtResource("1_ofjpb")
-AllMaps = ExtResource("2_4bqsn")
+MapDb = ExtResource("2_4bqsn")
 AllPokemon = ExtResource("3_sqawy")

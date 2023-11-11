@@ -1,8 +1,7 @@
 using Godot;
 
 [GlobalClass]
-public partial class Pokemon : Resource
-{
+public partial class Pokemon : Resource {
   [Export] public int PokedexNumber { get; set; }
   [Export] public string Name { get; set; }
   [Export] public int HP { get; set; }
