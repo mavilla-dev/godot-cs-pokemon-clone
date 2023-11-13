@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7re7ojxeakv0"]
 
-[ext_resource type="Script" path="res://Scenes/LoadGame/LoadGameSaveSlot/LoadGameSlot.cs" id="1_4tj7m"]
-[ext_resource type="Texture2D" uid="uid://c5d2m5t3lfbyu" path="res://Art/Pokedex_icons.png" id="2_jfy3r"]
+[ext_resource type="Script" path="res://ui/load_game/load_game_slot/LoadGameSlot.cs" id="1_yb3q6"]
+[ext_resource type="Texture2D" uid="uid://c5d2m5t3lfbyu" path="res://Art/Pokedex_icons.png" id="2_ey10x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4cje"]
-atlas = ExtResource("2_jfy3r")
+atlas = ExtResource("2_ey10x")
 region = Rect2(11, 1, 5, 7)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocil3"]
@@ -13,7 +13,7 @@ bg_color = Color(0.45098, 0.733333, 0.788235, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56me3"]
 bg_color = Color(0.945098, 0.831373, 0.898039, 1)
 
-[node name="LoadGameSlot" type="Control" node_paths=PackedStringArray("SlotNumber", "TrainerName", "TimePlayed", "BadgeCount", "PokedexCount", "CaughtCount", "ExistingDataRoot", "NewGameRoot", "SelectionArrow")]
+[node name="LoadGameSlot" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,17 +22,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_4tj7m")
-SlotNumber = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Slot Highlight/MarginContainer/Slot Number")
-TrainerName = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Trainer Name")
-TimePlayed = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Game Time")
-BadgeCount = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Badges")
-PokedexCount = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Pokdex")
-CaughtCount = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data/Caught")
-ExistingDataRoot = NodePath("MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data")
-NewGameRoot = NodePath("MarginContainer/Background/MarginContainer/New Game")
-SelectionArrow = NodePath("MarginContainer/MarginContainer/SelectionArrow")
-White = Color(1, 1, 1, 1)
+focus_mode = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_yb3q6")
 
 [node name="MarginContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -47,7 +39,8 @@ layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="SelectionArrow" type="TextureRect" parent="MarginContainer/MarginContainer"]
+[node name="Arrow" type="TextureRect" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 160)
 layout_mode = 2
 texture = SubResource("AtlasTexture_j4cje")
@@ -56,6 +49,7 @@ stretch_mode = 5
 [node name="Background" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_ocil3")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Background"]
@@ -81,54 +75,61 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="Slot Number" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Slot Highlight/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
 theme_override_font_sizes/font_size = 44
 text = "Slot 1"
 
-[node name="Existing Data" type="VBoxContainer" parent="MarginContainer/Background/MarginContainer/VBoxContainer"]
-visible = false
+[node name="Existing Data Root" type="VBoxContainer" parent="MarginContainer/Background/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Trainer Name" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+[node name="Trainer Name" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data Root"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
 theme_override_font_sizes/font_size = 32
 text = "Trainer: Unknown"
 vertical_alignment = 1
 
-[node name="Game Time" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+[node name="Game Time" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data Root"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
 theme_override_font_sizes/font_size = 24
 text = "Time Played: 00:00"
 vertical_alignment = 1
 
-[node name="Badges" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+[node name="Badges" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data Root"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
 theme_override_font_sizes/font_size = 32
 text = "Badges: 0"
 vertical_alignment = 1
 
-[node name="Pokdex" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+[node name="Pokedex Count" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data Root"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
 theme_override_font_sizes/font_size = 32
 text = "Pokdex: 10"
 vertical_alignment = 1
 
-[node name="Caught" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data"]
+[node name="Caught" type="Label" parent="MarginContainer/Background/MarginContainer/VBoxContainer/Existing Data Root"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
 theme_override_font_sizes/font_size = 32
 text = "Caught: 1"
 vertical_alignment = 1
 
-[node name="New Game" type="CenterContainer" parent="MarginContainer/Background/MarginContainer"]
+[node name="New Game Root" type="CenterContainer" parent="MarginContainer/Background/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Background/MarginContainer/New Game"]
+[node name="Label" type="Label" parent="MarginContainer/Background/MarginContainer/New Game Root"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0313726, 0.00784314, 0.00784314, 1)
 theme_override_font_sizes/font_size = 60

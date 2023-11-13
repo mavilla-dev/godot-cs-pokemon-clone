@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6gl87gmm0nyg"]
+
+[ext_resource type="Script" path="res://Program.cs" id="1_g47oy"]
+[ext_resource type="PackedScene" uid="uid://6ccm1npgm8lx" path="res://ui/start_screen/ui_start_screen.tscn" id="2_2i6pd"]
+[ext_resource type="PackedScene" uid="uid://ddgsspgiht05f" path="res://ui/load_game/ui_load_game.tscn" id="3_f8h13"]
+[ext_resource type="PackedScene" uid="uid://be5dyjksrivi0" path="res://Scenes/Character/character.tscn" id="4_46tlb"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_g47oy")
+SceneStartScreen = ExtResource("2_2i6pd")
+SceneLoadSave = ExtResource("3_f8h13")
+CharacterScene = ExtResource("4_46tlb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true

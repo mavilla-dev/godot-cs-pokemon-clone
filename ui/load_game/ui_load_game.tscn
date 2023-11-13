@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddgsspgiht05f"]
+
+[ext_resource type="Script" path="res://ui/load_game/LoadGameScene.cs" id="1_g31w0"]
+[ext_resource type="PackedScene" uid="uid://b7re7ojxeakv0" path="res://ui/load_game/load_game_slot/load_game_slot.tscn" id="2_51xxk"]
+[ext_resource type="PackedScene" uid="uid://6ccm1npgm8lx" path="res://ui/start_screen/ui_start_screen.tscn" id="3_i4hgm"]
+
+[node name="LoadGame" type="Control"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_g31w0")
+_saveSlotEntry = ExtResource("2_51xxk")
+_previousScene = ExtResource("3_i4hgm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.882353, 0.960784, 0.882353, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 20
+
+[node name="SlotRoot" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LoadGameSlot" parent="ColorRect/MarginContainer/SlotRoot" instance=ExtResource("2_51xxk")]
+layout_mode = 2
+
+[node name="LoadGameSlot2" parent="ColorRect/MarginContainer/SlotRoot" instance=ExtResource("2_51xxk")]
+layout_mode = 2
+
+[node name="LoadGameSlot3" parent="ColorRect/MarginContainer/SlotRoot" instance=ExtResource("2_51xxk")]
+layout_mode = 2

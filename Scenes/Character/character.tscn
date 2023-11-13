@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://be5dyjksrivi0"]
+[gd_scene load_steps=21 format=3 uid="uid://be5dyjksrivi0"]
 
 [ext_resource type="Script" path="res://Scenes/Character/Character.cs" id="1_d2d87"]
 [ext_resource type="Texture2D" uid="uid://cn2t8hgea75uf" path="res://Art/MainCharacterBoy.png" id="1_ltru7"]
+[ext_resource type="PackedScene" uid="uid://dxotkqbk2u1es" path="res://ui/player_start_menu/player_start_menu.tscn" id="3_upy1q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cylta"]
 atlas = ExtResource("1_ltru7")
@@ -150,12 +151,12 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kp3jy"]
 size = Vector2(15, 15)
 
-[node name="Character" type="Node2D" node_paths=PackedStringArray("ShapeCast2D", "_animator")]
+[node name="Character" type="Node2D"]
 script = ExtResource("1_d2d87")
-ShapeCast2D = NodePath("ShapeCast2D")
-_animator = NodePath("Sprite2D")
+StartMenuScene = ExtResource("3_upy1q")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_wbe7f")
 animation = &"idle_down"
@@ -168,6 +169,7 @@ shape = SubResource("RectangleShape2D_cscje")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_kp3jy")
 target_position = Vector2(0, 0)
 max_results = 4

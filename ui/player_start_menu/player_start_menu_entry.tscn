@@ -25,8 +25,6 @@ focus_mode = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("1_ekuv0")
 EntryText = "Pokemon"
-metadata/EntryName = NodePath("MarginContainer/HBoxContainer/Label")
-metadata/SelectArrow = NodePath("MarginContainer/HBoxContainer/TextureRect")
 
 [node name="Testing Only" type="ColorRect" parent="."]
 visible = false
@@ -53,14 +51,16 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="Arrow" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 clip_children = 1
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 texture = SubResource("AtlasTexture_o7og4")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="PokeName" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.227451, 0.227451, 0.215686, 1)
 theme_override_font_sizes/font_size = 80

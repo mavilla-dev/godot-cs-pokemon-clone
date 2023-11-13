@@ -4,35 +4,34 @@ using static Godot.Node;
 
 public class GameWorldManager {
   private readonly Node _root;
-  private readonly PlayerGridMovementController _playerController;
   private readonly ITileMapController _mapController;
   private readonly MapDatabase _mapDatabase;
 
   public GameWorldManager(
     Node root,
-    PlayerGridMovementController playerController,
     ResourceDatabase database,
     ITileMapController mapController) {
     _root = root;
-    _playerController = playerController;
     _mapController = mapController;
     _mapDatabase = database.MapDb;
   }
+
+  /*
 
   public void SwapGameScene(MapName mapName, Vector2I gridLocation) {
     MapData map = SetupMapPortion(mapName);
 
     var localPos = map.MapToLocal(gridLocation);
-    _playerController.Character.GlobalPosition = map.ToGlobal(localPos);
-    _playerController.Character.ProcessMode = ProcessModeEnum.Always;
+    // _playerController.Character.GlobalPosition = map.ToGlobal(localPos);
+    // _playerController.Character.ProcessMode = ProcessModeEnum.Always;
   }
 
   public void SwapGameScene(MapName mapName, TeleportKey targetKey) {
     MapData map = SetupMapPortion(mapName);
 
     var targetArea = map.TeleportAreas.FirstOrDefault(x => x.Key == targetKey);
-    _playerController.Character.GlobalPosition = targetArea.SpawnLocation.GlobalPosition;
-    _playerController.Character.ProcessMode = ProcessModeEnum.Always;
+    // _playerController.Character.GlobalPosition = targetArea.SpawnLocation.GlobalPosition;
+    // _playerController.Character.ProcessMode = ProcessModeEnum.Always;
   }
 
   public void ClearActiveMap() {
@@ -49,7 +48,7 @@ public class GameWorldManager {
       return null;
     }
 
-    _playerController.Character.ProcessMode = ProcessModeEnum.Disabled;
+    // _playerController.Character.ProcessMode = ProcessModeEnum.Disabled;
     ClearActiveMap();
 
     var packedScene = GD.Load<PackedScene>(mapResource.MapScene.ResourcePath);
@@ -57,7 +56,7 @@ public class GameWorldManager {
     mapData.OnRequestTeleport += HandleRequestTeleport;
 
     _root.AddChild(mapData);
-    _playerController.ActiveTileMap = mapData;
+    // _playerController.ActiveTileMap = mapData;
 
     _mapController.TileMap = mapData;
     _mapController.MapName = mapName;
@@ -73,11 +72,13 @@ public class GameWorldManager {
       return;
     }
 
-    if (_playerController.IsCharacterMoving) {
-      // Wait for movement to finish
-      await _root.ToSignal(_playerController, nameof(_playerController.OnFinishedMoving));
-    }
+    // if (_playerController.IsCharacterMoving) {
+    //   // Wait for movement to finish
+    //   // await _root.ToSignal(_playerController, nameof(_playerController.OnFinishedMoving));
+    // }
 
     SwapGameScene(mapName, teleportKey);
   }
+
+  */
 }

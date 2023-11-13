@@ -2,70 +2,72 @@ using System.Linq;
 using Godot;
 
 public interface ISaveController {
-  public int SelectedSaveSlotIndex { get; set; }
-  public SaveData[] GetSaveSlots();
-  public void SavePlayerName(string trainerName);
-  public bool SaveGame();
-  public void PopulateSlot(int saveSlotIndex);
-  public SaveData GetActiveSave();
+  public SaveData SetActiveSlot(int id);
+}
+
+public class SaveGameArgs {
+  public Vector2I GlobalCharacterLocation;
+  public MapName CurrentMapName;
 }
 
 public partial class SaveDataController : Node, ISaveController {
   private const string SAVE_LOCATION = "user://savegame.res";
-  [Export] private SaveDataFile _saveFile = new();
+  [Export] private SaveDataFile _fileApi = new();
 
-  public int SelectedSaveSlotIndex { get; set; } = -1;
+  private int _activeSaveSlot = -1;
 
+  #region Lifecycle
   public override void _Ready() {
-    SetupSaveData();
+    LoadSaveFile();
   }
+  #endregion Lifecycle
 
   public SaveData[] GetSaveSlots() {
-    return _saveFile.SaveSlots;
+    return _fileApi.SaveSlots;
   }
 
   public void SavePlayerName(string trainerName) {
     GetActiveSave().TrainerName = trainerName;
   }
 
-  public bool SaveGame() {
+  public bool SaveGame(SaveGameArgs args) {
     var activeSave = GetActiveSave();
-    activeSave.PlayerGridLocation = this.GetPlayerGridMovementController().GetGlobalPlayerGridLocation();
-    activeSave.ActiveMap = this.GetTileMapController().MapName;
+    activeSave.PlayerGridLocation = args.GlobalCharacterLocation;
+    activeSave.ActiveMap = args.CurrentMapName;
 
-    var saveEr = ResourceSaver.Save(_saveFile, SAVE_LOCATION);
+    var saveEr = ResourceSaver.Save(_fileApi, SAVE_LOCATION);
     GD.Print("Saving Game Says:" + saveEr);
     return saveEr == Error.Ok;
   }
 
-  public void PopulateSlot(int saveSlotIndex) {
-    SelectedSaveSlotIndex = saveSlotIndex;
-    _saveFile.SaveSlots = _saveFile.SaveSlots.Append(
-      new SaveData {
-        SaveSlotId = saveSlotIndex
-      }).ToArray();
-  }
-
   public SaveData GetActiveSave() {
-    if (SelectedSaveSlotIndex == -1) {
+    if (_activeSaveSlot == -1) {
       return TestSave;
     }
 
-    return _saveFile.SaveSlots.First(x => x.SaveSlotId == SelectedSaveSlotIndex);
+    return _fileApi.SaveSlots.First(x => x.SaveSlotId == _activeSaveSlot);
+  }
+
+  public SaveData SetActiveSlot(int id) {
+    _activeSaveSlot = id;
+    SaveData save = _fileApi.SaveSlots.FirstOrDefault(x => x.SaveSlotId == id) ?? new SaveData {
+      SaveSlotId = id
+    };
+    return save;
   }
 
   #region Private
 
   private SaveData TestSave = new();
 
-  private SaveDataFile LoadGame() {
+  private SaveDataFile LoadFile() {
     return ResourceLoader.Load<SaveDataFile>(SAVE_LOCATION);
   }
 
-  private void SetupSaveData() {
+  private void LoadSaveFile() {
     bool exist = DoesSaveFileExist();
     if (exist) {
-      _saveFile = LoadGame();
+      _fileApi = LoadFile();
       return;
     }
   }
@@ -73,6 +75,8 @@ public partial class SaveDataController : Node, ISaveController {
   private bool DoesSaveFileExist() {
     return FileAccess.FileExists(SAVE_LOCATION);
   }
+
+
 
   #endregion Private
 }

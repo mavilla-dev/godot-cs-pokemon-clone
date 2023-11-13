@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccg5hypmovxbi"]
+
+[ext_resource type="Script" path="res://Autoloads/TileMapController.cs" id="1_lksv3"]
+[ext_resource type="Resource" uid="uid://bdign4pureose" path="res://Resources/Maps/AllMaps.tres" id="2_07cw1"]
+
+[node name="TileMapController" type="Node2D"]
+script = ExtResource("1_lksv3")
+_mapDatabase = ExtResource("2_07cw1")

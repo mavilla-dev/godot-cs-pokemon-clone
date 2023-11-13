@@ -1,5 +1,8 @@
-MarginContainer
+CanvasLayer
 ColorRect
+CenterContainer
+AcceptDialog
+MarginContainer
 Label
 TextureRect
 HBoxContainer
@@ -18,10 +21,8 @@ Area2D
 Node2D
 Sprite2D
 GridContainer
-CenterContainer
 ScrollContainer
 AnimatedSprite2D
-CanvasLayer
 Window
 SubViewportContainer
 SubViewport
@@ -29,4 +30,3 @@ TileMap
 Camera2D
 Node
 AspectRatioContainer
-HSplitContainer

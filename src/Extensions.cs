@@ -11,11 +11,24 @@ public static class GodotExtensions {
     control.ProcessMode = Node.ProcessModeEnum.Inherit;
   }
 
+  public static Node GetNodeOrDefault(this Node n, string pathName) {
+    Node node = n.GetNode(pathName);
+    if (node == null) {
+      GD.PrintErr($"Node was found, {pathName}");
+    }
+    return node;
+  }
+
+  public static T GetNodeOrDefault<T>(this Node n, string pathName) where T : Node {
+    T node = n.GetNode<T>(pathName);
+    if (node == null) {
+      GD.PrintErr($"Node was found, {pathName}");
+    }
+    return node;
+  }
+
   public static SaveDataController GetSaveDataManager(this Node node)
     => node.GetNode<SaveDataController>("/root/SaveDataController");
-
-  public static PlayerGridMovementController GetPlayerGridMovementController(this Node node)
-    => node.GetNode<PlayerGridMovementController>("/root/PlayerGridMovementController");
 
   public static ResourceDatabase GetResourceDatabase(this Node node)
     => node.GetNode<ResourceDatabase>("/root/ResourceDatabase");

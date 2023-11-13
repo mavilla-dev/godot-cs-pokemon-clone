@@ -20,7 +20,9 @@ public static class Constants {
 
     public const string DEBUG_SPAWN = "debug_spawn";
     public const string LEFT_CLICK = "left_click";
+
     public const string UI_CANCEL = "ui_cancel";
+    public const string UI_ACCEPT = "ui_accept";
 
     public const string PRINT_TREE = "debug_print_tree";
   }

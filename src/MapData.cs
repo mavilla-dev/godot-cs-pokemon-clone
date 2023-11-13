@@ -20,7 +20,6 @@ public partial class MapData : TileMap {
   }
 
   private void HandleTeleportRequest(WorldTeleport tp) {
-    GD.Print($"- Node Entered: {tp.Name} || [{tp.Key}] Requesting Teleport to Map '{tp.TargetMap}' / Location '{tp.TargetKey}' ");
     EmitSignal(SignalName.OnRequestTeleport, (int)tp.TargetMap, (int)tp.TargetKey);
   }
 }

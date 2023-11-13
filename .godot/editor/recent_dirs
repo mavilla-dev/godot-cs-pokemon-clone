@@ -1,15 +1,14 @@
+res://Autoloads
+res://
+res://ui/start_screen
 res://ui/player_start_menu
 res://Fonts/Sometype_Mono
 res://Art
 res://Scenes/Pokemon Belt Entry
-res://Autoloads
 res://Scenes/PokeballItem
 res://Resources/Items
-res://
 res://Scenes/CharacterName
-res://Scenes/LoadGame/LoadGameSaveSlot
 res://Scenes/TextBox
-res://Scenes/StartMenuPokemon
 res://Scenes/Selection
 res://Scenes/BattleScene
 res://Scenes/Npc/NpcSprites

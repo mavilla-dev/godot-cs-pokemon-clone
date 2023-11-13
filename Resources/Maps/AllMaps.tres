@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=5 format=3 uid="uid://bdign4pureose"]
 
 [ext_resource type="Resource" uid="uid://df2spwgj7a8oq" path="res://Resources/Maps/PalletTown/PalletTown_MyHouse_Upper.tres" id="1_eimp3"]
+[ext_resource type="Resource" uid="uid://botca4fpqrqty" path="res://Resources/Maps/PalletTown/Overworld.tres" id="1_gs2e2"]
 [ext_resource type="Resource" uid="uid://q6x5ea3koovi" path="res://Resources/Maps/PalletTown/PalletTown_MyHouse_Lower.tres" id="2_1b1r3"]
 [ext_resource type="Script" path="res://src/MapDatabase.cs" id="2_gfyis"]
-[ext_resource type="Resource" uid="uid://botca4fpqrqty" path="res://Resources/Maps/PalletTown/PalletTown_Outside.tres" id="3_ywfcq"]
 
 [resource]
 script = ExtResource("2_gfyis")
-Maps = Array[Resource]([ExtResource("1_eimp3"), ExtResource("2_1b1r3"), ExtResource("3_ywfcq")])
+_maps = Array[Resource]([ExtResource("1_gs2e2"), ExtResource("2_1b1r3"), ExtResource("1_eimp3")])

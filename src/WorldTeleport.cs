@@ -25,7 +25,7 @@ public enum MapName {
   None = 0,
   PalletTown_MyHouse_UpperLevel = 1,
   PalletTown_MyHouse_LowerLevel = 2,
-  PalletTown = 3,
+  Overworld = 3,
 }
 
 // DO NOT change keys

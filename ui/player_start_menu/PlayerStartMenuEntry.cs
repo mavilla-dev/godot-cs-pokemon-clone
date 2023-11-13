@@ -8,22 +8,19 @@ public partial class PlayerStartMenuEntry : Control {
 
   private Label _entryName;
   private TextureRect _selectArrow;
+  private const string _uniqPokeName = "%PokeName";
 
   #region Lifecycle
 
   public override void _Ready() {
-    _entryName = GetEntryName();
-
-    _selectArrow = GetNode<TextureRect>(
-      GetMeta("SelectArrow").As<NodePath>()
-    );
-
+    _entryName = GetNode<Label>(_uniqPokeName);
+    _selectArrow = GetNode<TextureRect>("%Arrow");
     _entryName.Text = EntryText;
   }
 
   public override void _Process(double delta) {
     if (Engine.IsEditorHint()) {
-      _entryName ??= GetEntryName();
+      _entryName ??= GetNode<Label>(_uniqPokeName);
       _entryName.Text = EntryText;
     }
   }
@@ -44,8 +41,4 @@ public partial class PlayerStartMenuEntry : Control {
   }
 
   #endregion Lifecycle
-
-  private Label GetEntryName() => GetNode<Label>(
-      GetMeta("EntryName").As<NodePath>()
-    );
 }

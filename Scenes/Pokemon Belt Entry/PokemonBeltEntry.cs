@@ -18,18 +18,11 @@ public partial class PokemonBeltEntry : Control {
       ? ClipChildrenMode.Disabled
       : ClipChildrenMode.Only;
   }
-
-  public override void _Notification(int what) {
-    GD.Print($"[{Name}] Notifcation {what}");
-    switch ((long)what) {
-      case NotificationDraw:
-        _Draw();
-        return;
-    }
-  }
   #endregion Lifecycle
 
-  public void SetPokeName(string pokeName) {
-    LabelPokemonName.Text = pokeName;
+  public void SetPokeName(string nickname, string pokeName) {
+    LabelPokemonName.Text = nickname.Trim() != string.Empty
+      ? nickname.Trim()
+      : pokeName;
   }
 }

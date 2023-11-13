@@ -1,18 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcadi2pvawst"]
 
-[ext_resource type="Script" path="res://Scenes/StartMenuPokemon/StartMenuPokemon.cs" id="1_yycry"]
+[ext_resource type="Script" path="res://ui/player_start_menu/pokemon_view/StartMenuPokemon.cs" id="1_yycry"]
 [ext_resource type="PackedScene" uid="uid://kojix4eg5516" path="res://Scenes/Pokemon Belt Entry/pokemon_belt_entry.tscn" id="2_e2ngw"]
 
-[node name="StartMenuPokemon" type="Control" node_paths=PackedStringArray("EntryRoot")]
+[node name="StartMenuPokemon" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("1_yycry")
-EntryRoot = NodePath("ColorRect/MarginContainer/VBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -35,15 +33,16 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+[node name="EntryRoot" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Pokemon Belt Entry" parent="ColorRect/MarginContainer/VBoxContainer" instance=ExtResource("2_e2ngw")]
+[node name="Pokemon Belt Entry" parent="ColorRect/MarginContainer/EntryRoot" instance=ExtResource("2_e2ngw")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Pokemon Belt Entry2")
 focus_next = NodePath("../Pokemon Belt Entry2")
 
-[node name="Pokemon Belt Entry2" parent="ColorRect/MarginContainer/VBoxContainer" instance=ExtResource("2_e2ngw")]
+[node name="Pokemon Belt Entry2" parent="ColorRect/MarginContainer/EntryRoot" instance=ExtResource("2_e2ngw")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Pokemon Belt Entry")
 focus_previous = NodePath("../Pokemon Belt Entry")

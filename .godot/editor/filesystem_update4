@@ -1,4 +1,4 @@
-res://Scenes/StartMenuPokemon/start_menu_pokemon.tscn
+res://Program.tscn
 res://Resources/Tilesets/master_tileset.tres
 res://Resources/Pokemon/0001_Bulbasaur.tres
 res://Resources/Pokemon/0004_charmander.tres
@@ -10,30 +10,26 @@ res://Resources/Pokemon/0006_charizard.tres
 res://Resources/Pokemon/0008_wartortle.tres
 res://Resources/Pokemon/0009_blastoise.tres
 res://Resources/Pokemon/0010_caterpie.tres
-res://Scenes/LoadGame/LoadGameSaveSlot/LoadGameSlot.cs
-res://Scenes/Pokemon Belt Entry/pokemon_belt_entry.tscn
-res://Resources/Atlas/PokedexIcons.tres
-res://Autoloads/PlayerGridMovementController.cs
+res://Program.cs
+res://Scenes/Pokemon Belt Entry/pokemon_belt_entry.tres
+res://ui/load_game/load_game_slot/load_game_slot.tscn
+res://ui/load_game/ui_load_game.tscn
+res://ui/start_screen/ui_start_screen.tscn
+res://Autoloads/AutoloadStartup.cs
 res://Autoloads/PokemonController.cs
 res://Autoloads/ResourceDatabase.cs
 res://Autoloads/SaveDataController.cs
 res://Autoloads/TileMapController.cs
-res://DebugTools/DebugTools.cs
-res://Main.cs
 res://Scenes/CharacterName/CharacterNameLetterSelection.cs
 res://Scenes/CharacterName/CharacterNameScene.cs
 res://Scenes/Character/Character.cs
-res://Scenes/Character/GridMovement.cs
 res://Scenes/CircleMarker/Marker.cs
-res://Scenes/LoadGame/LoadGameScene.cs
 res://Scenes/Npc/Npc.cs
 res://Scenes/PokedexEntry/PokedexEntry.cs
 res://Scenes/Pokedex/Pokedex.cs
 res://Scenes/Pokemon Belt Entry/PokemonBeltEntry.cs
 res://Scenes/Selection/Selection.cs
-res://Scenes/StartMenuPokemon/StartMenuPokemon.cs
 res://Scenes/StartMenu/StartMenu.cs
-res://Scenes/StartScreen/StartScreenScene.cs
 res://src/Belt.cs
 res://src/BeltEntry.cs
 res://src/CaughtPokemon.cs
@@ -48,12 +44,14 @@ res://src/SaveGame/SaveData.cs
 res://src/SaveGame/SaveDataFile.cs
 res://src/TileMapItem.cs
 res://src/WorldTeleport.cs
-res://Art/all_pokemon.tres
-res://Main.tscn
-res://World/pallet_town/pallet_town_outside.tscn
-res://Scenes/Character/character.tscn
-res://Scenes/Pokemon Belt Entry/pokemon_belt_entry.tres
-res://ui/player_start_menu/player_start_menu.tscn
-res://ui/player_start_menu/player_start_menu_entry.tscn
+res://ui/load_game/LoadGameScene.cs
+res://ui/load_game/load_game_slot/LoadGameSlot.cs
 res://ui/player_start_menu/PlayerStartMenu.cs
 res://ui/player_start_menu/PlayerStartMenuEntry.cs
+res://ui/player_start_menu/pokemon_view/StartMenuPokemon.cs
+res://ui/start_screen/StartScreenScene.cs
+res://Fonts/Sometype_Mono/sometype_mono.tres
+res://Autoloads/tile_map_controller.tscn
+res://Resources/Maps/PalletTown/Overworld.tres
+res://Resources/Maps/AllMaps.tres
+res://World/pallet_town/pallet_town_my_house_upper_room.tscn

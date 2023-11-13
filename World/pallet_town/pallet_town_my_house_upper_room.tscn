@@ -27,7 +27,7 @@ TargetMap = 2
 TargetKey = 3
 
 [node name="StartingSpawn" parent="." node_paths=PackedStringArray("SpawnLocation") instance=ExtResource("3_xm6mf")]
-position = Vector2(-24, 72)
+position = Vector2(-40, 72)
 Key = 1
 SpawnLocation = NodePath("../Init Spawn")
 
