@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\src\\godot\\PokemonClone\\PokemonClone.csproj": {}
+    "C:\\_src\\godot\\PokemonClone\\PokemonClone.csproj": {}
   },
   "projects": {
-    "C:\\src\\godot\\PokemonClone\\PokemonClone.csproj": {
+    "C:\\_src\\godot\\PokemonClone\\PokemonClone.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\src\\godot\\PokemonClone\\PokemonClone.csproj",
+        "projectUniqueName": "C:\\_src\\godot\\PokemonClone\\PokemonClone.csproj",
         "projectName": "PokemonClone",
-        "projectPath": "C:\\src\\godot\\PokemonClone\\PokemonClone.csproj",
+        "projectPath": "C:\\_src\\godot\\PokemonClone\\PokemonClone.csproj",
         "packagesPath": "C:\\Users\\Manny\\.nuget\\packages\\",
-        "outputPath": "C:\\src\\godot\\PokemonClone\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\_src\\godot\\PokemonClone\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Manny\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,15 +42,15 @@
           "dependencies": {
             "Godot.SourceGenerators": {
               "target": "Package",
-              "version": "[4.1.2, )"
+              "version": "[4.2.0, )"
             },
             "GodotSharp": {
               "target": "Package",
-              "version": "[4.1.2, )"
+              "version": "[4.2.0, )"
             },
             "GodotSharpEditor": {
               "target": "Package",
-              "version": "[4.1.2, )"
+              "version": "[4.2.0, )"
             }
           },
           "imports": [

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bgue60dsf7tme" path="res://Scenes/WorldTeleport/world_teleport.tscn" id="3_xm6mf"]
 [ext_resource type="PackedScene" uid="uid://uyel4idhlgh4" path="res://Scenes/CircleMarker/circle_marker.tscn" id="5_ytsee"]
 
-[node name="TileMap" type="TileMap"]
+[node name="Pallet Upper Room" type="TileMap"]
 tile_set = ExtResource("1_2rs8v")
 format = 2
 layer_0/name = "walkable"

@@ -20,4 +20,13 @@ public static class Autoload {
 
   public static IPokemonController PokemonController
     => Instance.GetNode<PokemonController>("/root/PokemonController");
+
+  public static ISceneChanger SceneChanger
+    => Instance.GetNode<SceneChanger>("/root/SceneChanger");
+
+  public static IAnimationController AnimationController
+    => Instance.GetNode<AnimationController>("/root/AnimationController");
+
+  public static IMusicController MusicController
+  => Instance.GetNode<MusicController>("/root/MusicController");
 }

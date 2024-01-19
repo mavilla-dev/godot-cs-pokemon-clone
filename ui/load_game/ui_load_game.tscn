@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddgsspgiht05f"]
+[gd_scene load_steps=3 format=3 uid="uid://ddgsspgiht05f"]
 
 [ext_resource type="Script" path="res://ui/load_game/LoadGameScene.cs" id="1_g31w0"]
 [ext_resource type="PackedScene" uid="uid://b7re7ojxeakv0" path="res://ui/load_game/load_game_slot/load_game_slot.tscn" id="2_51xxk"]
-[ext_resource type="PackedScene" uid="uid://6ccm1npgm8lx" path="res://ui/start_screen/ui_start_screen.tscn" id="3_i4hgm"]
 
 [node name="LoadGame" type="Control"]
 custom_minimum_size = Vector2(1000, 0)
@@ -16,7 +15,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_g31w0")
 _saveSlotEntry = ExtResource("2_51xxk")
-_previousScene = ExtResource("3_i4hgm")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

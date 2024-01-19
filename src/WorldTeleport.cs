@@ -16,7 +16,12 @@ public partial class WorldTeleport : Area2D {
   }
 
   private void TriggerTeleport(Area2D area) {
-    EmitSignal(SignalName.OnTeleportRequested, this);
+    if (TargetKey == TeleportKey.None || TargetMap == MapName.None) {
+      GD.PrintErr("No target key or map was set. " + Key);
+      return;
+    }
+
+    Autoload.MapController.SwapTilemapAsync(TargetMap, TargetKey);
   }
 }
 

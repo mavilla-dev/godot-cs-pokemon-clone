@@ -2,6 +2,8 @@ using Godot;
 
 public partial class PlayerStartMenu : Control {
   [Export] private PackedScene PokemonViewScene { get; set; }
+  [Export] private PackedScene MessageBoxScene { get; set; }
+  [Export] private PackedScene ConfirmationModalScene { get; set; }
 
   private Node _entryRoot;
   private Node _submenuRoot;
@@ -48,9 +50,13 @@ public partial class PlayerStartMenu : Control {
 
   public override void _Input(InputEvent ev) {
     if (ev.IsActionPressed(Constants.InputActions.UI_CANCEL)) {
-      QueueFree();
+      HideMenu();
       AcceptEvent();
     }
+  }
+
+  public void SetFocusOnFirstItem() {
+    _pokedex.GrabFocus();
   }
 
   #endregion Lifecycle
@@ -75,8 +81,39 @@ public partial class PlayerStartMenu : Control {
     GD.Print("playername click");
   }
 
-  private void HandleSaveClick() {
-    GD.Print("save click");
+  private async void HandleSaveClick() {
+    // Prompt to confirm save
+    var messageBox = MessageBoxScene.Instantiate<MessageBox>();
+    GetTree().Root.AddChild(messageBox);
+    messageBox.SetText(new string[] { "Are you sure you want to save?" });
+    messageBox.Play();
+    await ToSignal(messageBox, nameof(messageBox.OnDone));
+    await ToSignal(GetTree().CreateTimer(1), "timeout");
+
+    var confirmModal = ConfirmationModalScene.Instantiate<ConfirmationModal>();
+    GetTree().Root.AddChild(confirmModal);
+    var signal = await ToSignal(confirmModal, nameof(confirmModal.OnSelection));
+    var isConfirm = signal[0].AsBool();
+    confirmModal.QueueFree();
+
+    if (!isConfirm) {
+      messageBox.QueueFree();
+      return;
+    }
+
+    messageBox.SetText(new string[] { "Saving..." });
+    messageBox.Play();
+
+    var success = Autoload.SaveDataController.SaveGame(new SaveGameArgs {
+      CurrentMapName = Autoload.MapController.MapName,
+      GlobalCharacterLocation = Autoload.MapController.GetPlayerGridPosition(),
+    });
+
+    messageBox.SetText(new string[] { isConfirm ? "Game Saved!" : "Could not save..." });
+    messageBox.Play();
+    await ToSignal(messageBox, nameof(messageBox.OnDone));
+    messageBox.QueueFree();
+    _save.GrabFocus();
   }
 
   private void HandleOptionsClick() {
@@ -84,10 +121,15 @@ public partial class PlayerStartMenu : Control {
   }
 
   private void HandleExitClick() {
-    QueueFree();
+    HideMenu();
   }
 
   private void HandleQuitGame() {
     GetTree().Quit();
+  }
+
+  private void HideMenu() {
+    Hide();
+    Autoload.MapController.Character.DisableMovement(false);
   }
 }

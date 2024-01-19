@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7kqimr6q5irl"]
+
+[ext_resource type="Script" path="res://ui/message_box/MessageBox.cs" id="1_0k4gq"]
+[ext_resource type="Texture2D" uid="uid://da7yigk4d73hs" path="res://Art/outline2.png" id="2_qu5th"]
+[ext_resource type="Texture2D" uid="uid://dx0u0g413mbeo" path="res://Resources/Atlas/PokedexIcons.tres" id="3_yvp16"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl6dy"]
+bg_color = Color(0.882353, 0.960784, 0.882353, 1)
+
+[node name="MessageBox" type="CanvasLayer"]
+script = ExtResource("1_0k4gq")
+TextSpeedNormal = 0.05
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sl6dy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_qu5th")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 45
+patch_margin_top = 45
+patch_margin_right = 46
+patch_margin_bottom = 46
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/MarginContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 48
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/NinePatchRect2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/PanelContainer/MarginContainer/NinePatchRect2/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1750, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/NinePatchRect2/MarginContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1750, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 76
+text = "Hello there! Welcome to the world of Pokémon! My name is Oak! People call me the Pokémon Prof! Hello there! Welcome to the world of Pokémon! My name is Oak! People call me the Pokémon Prof! "
+autowrap_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="Control/PanelContainer/MarginContainer/NinePatchRect2/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("3_yvp16")
+stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true

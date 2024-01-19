@@ -1,7 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7re7ojxeakv0"]
+[gd_scene load_steps=11 format=3 uid="uid://b7re7ojxeakv0"]
 
 [ext_resource type="Script" path="res://ui/load_game/load_game_slot/LoadGameSlot.cs" id="1_yb3q6"]
 [ext_resource type="Texture2D" uid="uid://c5d2m5t3lfbyu" path="res://Art/Pokedex_icons.png" id="2_ey10x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eppvc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywlj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekh8b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nto2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pklig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4cje"]
 atlas = ExtResource("2_ey10x")
@@ -13,8 +23,7 @@ bg_color = Color(0.45098, 0.733333, 0.788235, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56me3"]
 bg_color = Color(0.945098, 0.831373, 0.898039, 1)
 
-[node name="LoadGameSlot" type="Control"]
-layout_mode = 3
+[node name="LoadGameSlot" type="Button"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,8 +31,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eppvc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ywlj7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ekh8b")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nto2r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pklig")
 script = ExtResource("1_yb3q6")
 
 [node name="MarginContainer" type="HBoxContainer" parent="."]

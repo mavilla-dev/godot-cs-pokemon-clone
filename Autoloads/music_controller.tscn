@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://i8p6rac64625"]
+
+[ext_resource type="Script" path="res://Autoloads/MusicController.cs" id="1_3qxwh"]
+[ext_resource type="AudioStream" uid="uid://c8wc56hnr47o5" path="res://music/1-01. Opening.mp3" id="2_ew5ca"]
+
+[node name="MusicController" type="Node2D"]
+script = ExtResource("1_3qxwh")
+IntroMusic = ExtResource("2_ew5ca")
+
+[node name="Player" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true

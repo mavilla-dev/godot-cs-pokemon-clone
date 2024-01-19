@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://g5wsufnwvkhh"]
+
+[ext_resource type="Script" path="res://ui/confirmation_modal/ConfirmationModal.cs" id="1_cwjfw"]
+[ext_resource type="PackedScene" uid="uid://3mk0hh1atplk" path="res://ui/player_start_menu/player_start_menu_entry.tscn" id="1_q1ruk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5iat"]
+bg_color = Color(0.882353, 0.960784, 0.882353, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.227451, 0.227451, 0.215686, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="ConfirmationModal" type="CanvasLayer"]
+script = ExtResource("1_cwjfw")
+
+[node name="Background2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -364.0
+offset_right = 120.0
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5iat")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background2"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="EntryRoot" type="VBoxContainer" parent="Background2/MarginContainer"]
+layout_mode = 2
+
+[node name="No" parent="Background2/MarginContainer/EntryRoot" instance=ExtResource("1_q1ruk")]
+unique_name_in_owner = true
+layout_mode = 2
+EntryText = "No"
+
+[node name="Yes" parent="Background2/MarginContainer/EntryRoot" instance=ExtResource("1_q1ruk")]
+unique_name_in_owner = true
+layout_mode = 2
+EntryText = "Yes"

@@ -3,6 +3,12 @@ using Godot;
 public static class Constants {
   public static Vector2 PIXEL_SCALE = new(5, 5);
 
+  public static class TileMapProperties {
+    public const string IS_WALL = "is_wall";
+    public const string IS_OCCUPIED = "is_occupied";
+    public const string IS_WATER = "is_water";
+  }
+
   public static class TileMapLayer {
     public const int WALKABLE = 0;
     public const int WALLS = 1;

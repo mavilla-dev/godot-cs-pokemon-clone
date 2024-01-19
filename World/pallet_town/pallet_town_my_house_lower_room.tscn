@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://uyel4idhlgh4" path="res://Scenes/CircleMarker/circle_marker.tscn" id="3_6404c"]
 [ext_resource type="PackedScene" uid="uid://bgue60dsf7tme" path="res://Scenes/WorldTeleport/world_teleport.tscn" id="3_ctnn5"]
 
-[node name="TileMap" type="TileMap"]
+[node name="Pallet Lower Room" type="TileMap"]
 position = Vector2(24, 8)
 tile_set = ExtResource("1_5t1gh")
 format = 2

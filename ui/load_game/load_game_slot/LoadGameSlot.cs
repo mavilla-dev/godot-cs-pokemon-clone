@@ -1,7 +1,7 @@
 using Godot;
 
-public partial class LoadGameSlot : Control {
-  [Signal] public delegate void PressedEventHandler();
+public partial class LoadGameSlot : Button {
+  // [Signal] public delegate void PressedEventHandler(LoadGameSlot loadGameSlot);
 
   private Label _slotNumber;
   private Label _trainerName;
@@ -17,7 +17,7 @@ public partial class LoadGameSlot : Control {
   private Color White;
   private Color Transparent;
 
-  public int SlotId { get; set; }
+  [Export] public int SlotId { get; private set; }
 
   #region Lifecycle
   public override void _Ready() {
@@ -30,12 +30,12 @@ public partial class LoadGameSlot : Control {
       : ClipChildrenMode.Only;
   }
 
-  public override void _Input(InputEvent ev) {
-    if (ev.IsActionPressed(Constants.InputActions.UI_ACCEPT)) {
-      EmitSignal(SignalName.Pressed);
-      AcceptEvent();
-    }
-  }
+  // public override void _Input(InputEvent ev) {
+  //   if (ev.IsActionPressed(Constants.InputActions.UI_ACCEPT)) {
+  //     EmitSignal(SignalName.Pressed, this);
+  //     AcceptEvent();
+  //   }
+  // }
   #endregion Lifecycle
 
   #region API
@@ -50,8 +50,9 @@ public partial class LoadGameSlot : Control {
     _newGameRoot.Hide();
   }
 
-  public void SetSlotNumber(int num) {
-    _slotNumber.Text = "Slot " + num;
+  public void SetSlotId(int slotId) {
+    SlotId = slotId;
+    _slotNumber.Text = "Slot " + (slotId + 1);
   }
 
   public void SetTrainerName(string name) {

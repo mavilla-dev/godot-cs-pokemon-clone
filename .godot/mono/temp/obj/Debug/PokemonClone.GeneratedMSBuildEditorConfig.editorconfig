@@ -1,6 +1,6 @@
 is_global = true
 build_property.GodotDisabledSourceGenerators = 
-build_property.GodotProjectDir = C:\src\godot\PokemonClone\
+build_property.GodotProjectDir = C:\_src\godot\PokemonClone\
 build_property.GodotProjectDirBase64 = 
 build_property.GodotSourceGenerators = 
 build_property.IsGodotToolsProject = 
@@ -13,4 +13,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PokemonClone
-build_property.ProjectDir = C:\src\godot\PokemonClone\
+build_property.ProjectDir = C:\_src\godot\PokemonClone\

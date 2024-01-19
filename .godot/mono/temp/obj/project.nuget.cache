@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "J1S+W80KqvexFY45anBuH5KonSlNSeDOmB44AJSY07dcy6k5TZRKgE6pOiN1VAvsXnf0WHDWdh0NGg/FauOXpA==",
+  "dgSpecHash": "S4YAfsELWZ20Vtd3jvDwr2gOPRtBAg50cTzChuK/4D8hI4p7I3KTMGTUnL8qXG3IgrbBpA+frmz39c9uopHGyg==",
   "success": true,
-  "projectFilePath": "C:\\src\\godot\\PokemonClone\\PokemonClone.csproj",
+  "projectFilePath": "C:\\_src\\godot\\PokemonClone\\PokemonClone.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Manny\\.nuget\\packages\\godot.sourcegenerators\\4.1.2\\godot.sourcegenerators.4.1.2.nupkg.sha512",
-    "C:\\Users\\Manny\\.nuget\\packages\\godotsharp\\4.1.2\\godotsharp.4.1.2.nupkg.sha512",
-    "C:\\Users\\Manny\\.nuget\\packages\\godotsharpeditor\\4.1.2\\godotsharpeditor.4.1.2.nupkg.sha512"
+    "C:\\Users\\Manny\\.nuget\\packages\\godot.sourcegenerators\\4.2.0\\godot.sourcegenerators.4.2.0.nupkg.sha512",
+    "C:\\Users\\Manny\\.nuget\\packages\\godotsharp\\4.2.0\\godotsharp.4.2.0.nupkg.sha512",
+    "C:\\Users\\Manny\\.nuget\\packages\\godotsharpeditor\\4.2.0\\godotsharpeditor.4.2.0.nupkg.sha512"
   ],
   "logs": []
 }

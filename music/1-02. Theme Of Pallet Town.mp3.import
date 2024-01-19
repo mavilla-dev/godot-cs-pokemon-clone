@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drsm0bpanwgnv"
+path="res://.godot/imported/1-02. Theme Of Pallet Town.mp3-5a35e83e1c1f072ea2c3d4384ba135f1.mp3str"
+
+[deps]
+
+source_file="res://music/1-02. Theme Of Pallet Town.mp3"
+dest_files=["res://.godot/imported/1-02. Theme Of Pallet Town.mp3-5a35e83e1c1f072ea2c3d4384ba135f1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

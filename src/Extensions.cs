@@ -14,7 +14,7 @@ public static class GodotExtensions {
   public static Node GetNodeOrDefault(this Node n, string pathName) {
     Node node = n.GetNode(pathName);
     if (node == null) {
-      GD.PrintErr($"Node was found, {pathName}");
+      GD.PrintErr($"Node NOT found, {pathName}");
     }
     return node;
   }
@@ -22,7 +22,7 @@ public static class GodotExtensions {
   public static T GetNodeOrDefault<T>(this Node n, string pathName) where T : Node {
     T node = n.GetNode<T>(pathName);
     if (node == null) {
-      GD.PrintErr($"Node was found, {pathName}");
+      GD.PrintErr($"Node NOT found, {pathName}");
     }
     return node;
   }

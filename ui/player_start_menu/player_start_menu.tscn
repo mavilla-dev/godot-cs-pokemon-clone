@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxotkqbk2u1es"]
+[gd_scene load_steps=7 format=3 uid="uid://dxotkqbk2u1es"]
 
 [ext_resource type="Script" path="res://ui/player_start_menu/PlayerStartMenu.cs" id="1_ukcxa"]
 [ext_resource type="PackedScene" uid="uid://3mk0hh1atplk" path="res://ui/player_start_menu/player_start_menu_entry.tscn" id="2_5btrn"]
 [ext_resource type="PackedScene" uid="uid://dcadi2pvawst" path="res://ui/player_start_menu/pokemon_view/start_menu_pokemon.tscn" id="2_rqyck"]
+[ext_resource type="PackedScene" uid="uid://c7kqimr6q5irl" path="res://ui/message_box/message_box.tscn" id="3_44q01"]
+[ext_resource type="PackedScene" uid="uid://g5wsufnwvkhh" path="res://ui/confirmation_modal/confirmation_modal.tscn" id="4_l6fs6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh3pg"]
 bg_color = Color(0.882353, 0.960784, 0.882353, 1)
@@ -28,6 +30,8 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ukcxa")
 PokemonViewScene = ExtResource("2_rqyck")
+MessageBoxScene = ExtResource("3_44q01")
+ConfirmationModalScene = ExtResource("4_l6fs6")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1

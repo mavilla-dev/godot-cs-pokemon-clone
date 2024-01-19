@@ -2,7 +2,10 @@ using System.Linq;
 using Godot;
 
 public interface ISaveController {
-  public SaveData SetActiveSlot(int id);
+  public ISaveData SetActiveSlot(int id);
+  public ISaveData GetActiveSaveData();
+  ISaveData[] GetExistingSaves();
+  public bool SaveGame(SaveGameArgs args);
 }
 
 public class SaveGameArgs {
@@ -22,25 +25,22 @@ public partial class SaveDataController : Node, ISaveController {
   }
   #endregion Lifecycle
 
-  public SaveData[] GetSaveSlots() {
+  public ISaveData[] GetExistingSaves() {
     return _fileApi.SaveSlots;
   }
 
-  public void SavePlayerName(string trainerName) {
-    GetActiveSave().TrainerName = trainerName;
-  }
-
   public bool SaveGame(SaveGameArgs args) {
-    var activeSave = GetActiveSave();
+    var activeSave = GetActiveSaveData();
     activeSave.PlayerGridLocation = args.GlobalCharacterLocation;
     activeSave.ActiveMap = args.CurrentMapName;
+    activeSave.IsNewGame = false;
 
     var saveEr = ResourceSaver.Save(_fileApi, SAVE_LOCATION);
     GD.Print("Saving Game Says:" + saveEr);
     return saveEr == Error.Ok;
   }
 
-  public SaveData GetActiveSave() {
+  public ISaveData GetActiveSaveData() {
     if (_activeSaveSlot == -1) {
       return TestSave;
     }
@@ -48,11 +48,18 @@ public partial class SaveDataController : Node, ISaveController {
     return _fileApi.SaveSlots.First(x => x.SaveSlotId == _activeSaveSlot);
   }
 
-  public SaveData SetActiveSlot(int id) {
+  public ISaveData SetActiveSlot(int id) {
     _activeSaveSlot = id;
-    SaveData save = _fileApi.SaveSlots.FirstOrDefault(x => x.SaveSlotId == id) ?? new SaveData {
-      SaveSlotId = id
-    };
+    ISaveData save = _fileApi.SaveSlots.FirstOrDefault(x => x.SaveSlotId == id);
+
+    if (save == null) {
+      save = new SaveData {
+        SaveSlotId = id
+      };
+      if (id >= 0) { // avoid saving testing slot
+        _fileApi.SaveSlots = _fileApi.SaveSlots.Append(save).Select(x => x as SaveData).ToArray();
+      }
+    }
     return save;
   }
 
@@ -75,8 +82,6 @@ public partial class SaveDataController : Node, ISaveController {
   private bool DoesSaveFileExist() {
     return FileAccess.FileExists(SAVE_LOCATION);
   }
-
-
 
   #endregion Private
 }

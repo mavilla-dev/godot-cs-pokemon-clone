@@ -3,14 +3,16 @@ using Godot;
 public partial class Character : Node2D {
   [Signal] public delegate void OnFinishedMovingEventHandler();
 
-  [Export] private PackedScene StartMenuScene;
+  [Export] private PackedScene PlayerStartMenu;
 
   public bool IsCharacterMoving { get; private set; }
   public bool IsOverworldActive { get; set; }
 
-  private ShapeCast2D _shapeCast { get; set; }
-  private AnimatedSprite2D _animator { get; set; }
-  private PlayerStartMenu _startMenu { get; set; }
+  private RayCast2D _raycast;
+  private ShapeCast2D _shapeCast;
+  private AnimatedSprite2D _animator;
+  private Node _canvasLayer;
+  private PlayerStartMenu _startMenu;
 
   private Vector2 _targetPosition;
   private MoveDirection _lastDirection;
@@ -25,20 +27,19 @@ public partial class Character : Node2D {
   public override void _Ready() {
     _animator = this.GetNodeOrDefault<AnimatedSprite2D>("%Animator");
     _shapeCast = this.GetNodeOrDefault<ShapeCast2D>("%ShapeCast2D");
-    _startMenu = this.GetNodeOrDefault<PlayerStartMenu>("%PlayerStartMenu");
+    _canvasLayer = this.GetNodeOrDefault("%CanvasLayer");
 
     Scale = Constants.PIXEL_SCALE;
   }
 
   public override void _Process(double delta) {
-    ReadInputMovement();
+    ReadInput();
     MoveTowardsTargetPosition(delta);
   }
 
   public override void _UnhandledInput(InputEvent ev) {
     if (ev.IsActionPressed(Constants.InputActions.START)) {
-      // StartMenu.ShowControl();
-      // _isMovementDisabled = true;
+      ToggleStartMenu();
     }
   }
 
@@ -64,7 +65,7 @@ public partial class Character : Node2D {
   }
 
   public Vector2I GetGlobalPlayerGridLocation() {
-    var tileMap = Autoload.MapController.TileMap;
+    var tileMap = Autoload.MapController.ActiveTileMap;
     var localMapPosition = tileMap.ToLocal(GlobalPosition);
     return tileMap.LocalToMap(localMapPosition);
   }
@@ -81,6 +82,22 @@ public partial class Character : Node2D {
   #endregion Public Methods
 
   #region Private Methods
+  private void ToggleStartMenu() {
+    if (_startMenu == null) {
+      DisableMovement(true);
+      _startMenu = PlayerStartMenu.Instantiate<PlayerStartMenu>();
+      _canvasLayer.AddChild(_startMenu);
+      _startMenu.TreeExited += () => DisableMovement(false);
+      return;
+    }
+
+    _startMenu.Visible = !_startMenu.Visible;
+    DisableMovement(_startMenu.Visible);
+    if (_startMenu.Visible) {
+      _startMenu.SetFocusOnFirstItem();
+    }
+  }
+
   private Vector2 GetMoveVector(MoveDirection direction) {
     switch (direction) {
       case MoveDirection.Up:
@@ -97,20 +114,27 @@ public partial class Character : Node2D {
   }
   private void CalculateNextMove(MoveDirection direction) {
     Vector2 movement = GetMoveVector(direction);
-    var tileMap = Autoload.MapController.TileMap;
+    var tileMap = Autoload.MapController.ActiveTileMap;
     var globalCharEndPosition = GlobalPosition + (movement * tileMap.Scale * tileMap.CellQuadrantSize);
     var endPositionlocalToGrid = tileMap.ToLocal(globalCharEndPosition);
-    var gridPosition = tileMap.LocalToMap(endPositionlocalToGrid);
+    var endGridPosition = tileMap.LocalToMap(endPositionlocalToGrid);
 
-    var tileDataGround = tileMap.GetCellTileData(Constants.TileMapLayer.WALKABLE, gridPosition);
-    if (tileDataGround == null) { // No ground tile exists, ignore more
+    var targetPosTileData = tileMap.GetCellTileData(Constants.TileMapLayer.WALKABLE, endGridPosition);
+    if (targetPosTileData == null) { // No ground tile exists, ignore more
       return;
     }
-    if (tileDataGround.GetCustomData("is_wall").AsBool()) {
+    if (targetPosTileData.GetCustomData(Constants.TileMapProperties.IS_WALL).AsBool()) {
+      return;
+    }
+    if (targetPosTileData.GetCustomData(Constants.TileMapProperties.IS_OCCUPIED).AsBool()) {
+      return;
+    }
+    if (targetPosTileData.GetCustomData(Constants.TileMapProperties.IS_WATER).AsBool()) {
+      // eventually handle ability to swim with HM
       return;
     }
 
-    var tileDataWall = tileMap.GetCellTileData(Constants.TileMapLayer.WALLS, gridPosition);
+    var tileDataWall = tileMap.GetCellTileData(Constants.TileMapLayer.WALLS, endGridPosition);
     if (tileDataWall != null) { // we hit a wall
       return;
     }
@@ -118,7 +142,7 @@ public partial class Character : Node2D {
     _targetPosition = globalCharEndPosition;
   }
 
-  private void ReadInputMovement() {
+  private void ReadInput() {
     if (_isMovementDisabled) return;
 
     if (Input.IsActionPressed(Constants.InputActions.UP)) {
@@ -149,7 +173,7 @@ public partial class Character : Node2D {
 
     // Exit if we reached destination
     if (_targetPosition == GlobalPosition) {
-      var tileMap = Autoload.MapController.TileMap;
+      var tileMap = Autoload.MapController.ActiveTileMap;
       IsCharacterMoving = false;
       EmitSignal(SignalName.OnFinishedMoving);
       AnimateIdle(_lastDirection);

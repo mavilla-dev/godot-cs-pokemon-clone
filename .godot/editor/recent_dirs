@@ -1,4 +1,8 @@
+res://Scenes/Music Area
 res://Autoloads
+res://ui/confirmation_modal
+res://ui/message_box
+res://ui/Animations
 res://
 res://ui/start_screen
 res://ui/player_start_menu
@@ -16,6 +20,3 @@ res://Scenes/Npc
 res://Fonts/days
 res://Fonts/Silkscreen
 res://Resources/Fonts
-res://src
-res://Scenes/StartMenu
-res://Resources/Maps/PalletTown

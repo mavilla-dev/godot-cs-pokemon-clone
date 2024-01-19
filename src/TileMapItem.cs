@@ -17,7 +17,7 @@ public abstract partial class TileMapItem : Area2D {
   }
 
   private void EraseCell() {
-    var tileMap = this.GetTileMapController().TileMap;
+    var tileMap = this.GetTileMapController().ActiveTileMap;
     tileMap.EraseCell(TileLayer, tileMap.LocalToMap(Position));
     QueueFree();
   }

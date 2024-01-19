@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4lge1brp437y"]
+
+[ext_resource type="Script" path="res://ui/Animations/AnimationController.cs" id="1_b8nac"]
+
+[sub_resource type="Animation" id="Animation_5c5ry"]
+resource_name = "FadeToBlack"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlack Color:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_515tr"]
+_data = {
+"FadeToBlack": SubResource("Animation_5c5ry")
+}
+
+[node name="Node" type="Node"]
+script = ExtResource("1_b8nac")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FadeToBlack Color" type="ColorRect" parent="CanvasLayer/Control"]
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Background For Test" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_515tr")
+}

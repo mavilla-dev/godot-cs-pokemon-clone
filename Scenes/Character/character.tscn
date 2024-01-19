@@ -153,7 +153,7 @@ size = Vector2(15, 15)
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_d2d87")
-StartMenuScene = ExtResource("3_upy1q")
+PlayerStartMenu = ExtResource("3_upy1q")
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -161,9 +161,10 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_wbe7f")
 animation = &"idle_down"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Character" type="Area2D" parent="."]
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 shape = SubResource("RectangleShape2D_cscje")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -175,3 +176,9 @@ target_position = Vector2(0, 0)
 max_results = 4
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Ray" type="RayCast2D" parent="."]
+unique_name_in_owner = true

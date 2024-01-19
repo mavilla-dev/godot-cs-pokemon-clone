@@ -6,7 +6,7 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3wy0k"]
 load_path = "res://.godot/imported/uipack_rpg_sheet.png-40830bb6bd54a3bc21f538813bcb7ed5.ctex"
 
-[node name="CharacterName" type="Control" node_paths=PackedStringArray("GridContainer", "NameLabel", "SpecialButtons")]
+[node name="CharacterName" type="Control"]
 layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -14,9 +14,6 @@ offset_right = 900.0
 grow_vertical = 2
 script = ExtResource("1_2umha")
 CharacterNameLabel = ExtResource("1_krix8")
-GridContainer = NodePath("NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/GridContainer")
-NameLabel = NodePath("NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/Name")
-SpecialButtons = NodePath("NinePatchRect/MarginContainer/VBoxContainer")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -40,35 +37,38 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+[node name="ButtonRoot" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/ButtonRoot"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/ButtonRoot/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Name:"
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Name" type="Label" parent="NinePatchRect/MarginContainer/ButtonRoot/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Test"
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/ButtonRoot"]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="LetterGrid" type="GridContainer" parent="NinePatchRect/MarginContainer/ButtonRoot/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 5
 
-[node name="Letter Selection" parent="NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/GridContainer" instance=ExtResource("1_krix8")]
+[node name="Letter Selection" parent="NinePatchRect/MarginContainer/ButtonRoot/MarginContainer/LetterGrid" instance=ExtResource("1_krix8")]
 layout_mode = 2

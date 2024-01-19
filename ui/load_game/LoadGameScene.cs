@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Godot;
 
@@ -10,7 +11,6 @@ public partial class LoadGameScene : Control {
   private Node _slotRoot;
   private int MAX_SAVES = 3;
 
-
   public override void _Ready() {
     _slotRoot = this.GetNodeOrDefault("%SlotRoot");
     ClearTestData();
@@ -20,22 +20,19 @@ public partial class LoadGameScene : Control {
   public override void _Input(InputEvent ev) {
     if (ev.IsActionPressed(Constants.InputActions.UI_CANCEL)) {
       AcceptEvent();
-      EmitSignal(SignalName.OnGoBack);
+      Autoload.SceneChanger.ChangeScene(Autoload.SceneChanger.StartScreen);
     }
   }
 
-  private LoadGameSlot[] InitGameSlots() {
-    var slots = new LoadGameSlot[MAX_SAVES];
-    for (int index = 0; index < slots.Length; index++) {
-      var slot = _saveSlotEntry.Instantiate<LoadGameSlot>();
-      _slotRoot.AddChild(slot);
-      slots[index] = slot;
-      slot.SetNewGameView();
-      slot.SetSlotNumber(index + 1);
-      slot.SlotId = index;
-      slot.Pressed += () => EmitSignal(SignalName.OnSaveSelected, slot.SlotId);
+  private void HandleSaveSelected(LoadGameSlot loadGameSlot) {
+    GD.Print("SLOT " + loadGameSlot.SlotId);
+    var saveData = Autoload.SaveDataController.SetActiveSlot(loadGameSlot.SlotId);
+    if (saveData.IsNewGame) {
+      Autoload.SceneChanger.ChangeScene(Autoload.SceneChanger.NameInputScene);
+    } else {
+      QueueFree();
+      Autoload.MapController.LoadSavedGame(saveData);
     }
-    return slots;
   }
 
   private void ClearTestData() {
@@ -45,20 +42,25 @@ public partial class LoadGameScene : Control {
   }
 
   private void SetupSaveSlots() {
-    SaveData[] saves = SaveController.GetSaveSlots();
-    var slots = InitGameSlots();
-    slots.First().GrabFocus();
+    var existingSaves = Autoload.SaveDataController.GetExistingSaves();
+    var slots = new LoadGameSlot[MAX_SAVES];
 
-    for (int i = 0; i < slots.Length; i++) {
-      var save = saves.FirstOrDefault(x => x.SaveSlotId == i);
+    for (int index = 0; index < slots.Length; index++) {
+      var save = existingSaves.FirstOrDefault(x => x.SaveSlotId == index);
+      var slot = _saveSlotEntry.Instantiate<LoadGameSlot>();
+      _slotRoot.AddChild(slot); // must AddChild first to run _Ready method
+
+      slot.Pressed += () => HandleSaveSelected(slot);
+      slots[index] = slot;
+      slot.SetNewGameView();
+      slot.SetSlotId(index);
+      slot.Name = "Load Slot " + index;
+
       if (save == null) continue;
-
-      var slot = slots[i];
       slot.SetExistingGameView();
       slot.SetTrainerName(save.TrainerName);
-      // todo Add more data
     }
-  }
 
-  private SaveDataController SaveController => this.GetSaveDataManager();
+    slots.First().GrabFocus();
+  }
 }

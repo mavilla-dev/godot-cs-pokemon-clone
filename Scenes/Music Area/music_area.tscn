@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsk8qjnhbpvxk"]
+
+[ext_resource type="Script" path="res://World/pallet_town/MusicArea.cs" id="1_bfi68"]
+[ext_resource type="AudioStream" uid="uid://drsm0bpanwgnv" path="res://music/1-02. Theme Of Pallet Town.mp3" id="2_hf6xr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iagss"]
+size = Vector2(352, 336)
+
+[node name="Music Area" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_bfi68")
+MusicForArea = ExtResource("2_hf6xr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(152, 144)
+shape = SubResource("RectangleShape2D_iagss")

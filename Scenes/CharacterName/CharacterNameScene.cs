@@ -3,61 +3,67 @@ using Godot;
 
 public partial class CharacterNameScene : Control {
   [Export] private PackedScene CharacterNameLabel;
-  [Export] private GridContainer GridContainer;
-  [Export] private Label NameLabel;
-  [Export] private Node SpecialButtons;
 
-  // Called when the node enters the scene tree for the first time.
+  private Node _specialButtonRoot;
+  private Label _name;
+  private GridContainer _gridContainer;
+
   public override void _Ready() {
+    _specialButtonRoot = GetNode("%ButtonRoot");
+    _name = GetNode<Label>("%Name");
+    _gridContainer = GetNode<GridContainer>("%LetterGrid");
+
     ClearTest();
     SetupLetters();
     SetupSpecialButtons();
-    var firstButton = GridContainer.GetChild(0) as Control;
+    var firstButton = _gridContainer.GetChild(0) as Control;
     firstButton.GrabFocus();
   }
 
   private void ClearTest() {
-    foreach (var child in GridContainer.GetChildren()) {
+    foreach (var child in _gridContainer.GetChildren()) {
       child.Free();
     }
 
-    NameLabel.Text = string.Empty;
+    _name.Text = string.Empty;
   }
 
   private void SetupLetters() {
     foreach (var letter in Letters) {
       var button = CharacterNameLabel.Instantiate<CharacterNameLetterSelection>();
-      GridContainer.AddChild(button);
+      _gridContainer.AddChild(button);
       button.SetText(letter);
       button.SetSelected(false);
-      button.Pressed += () => { NameLabel.Text += letter; };
+      button.ButtonUp += () => { _name.Text += letter; };
     }
   }
 
   private void SetupSpecialButtons() {
     // Add DEL button
     var delButton = CharacterNameLabel.Instantiate<CharacterNameLetterSelection>();
-    SpecialButtons.AddChild(delButton);
+    _specialButtonRoot.AddChild(delButton);
 
     delButton.SetText("DEL");
     delButton.SetSelected(false);
     delButton.Pressed += () => {
-      if (NameLabel.Text.Length == 0) return;
+      if (_name.Text.Length == 0) return;
 
-      NameLabel.Text = NameLabel.Text.Substr(0, NameLabel.Text.Length - 1);
+      _name.Text = _name.Text.Substr(0, _name.Text.Length - 1);
     };
 
     // Add OK Button
     var okButton = CharacterNameLabel.Instantiate<CharacterNameLetterSelection>();
-    SpecialButtons.AddChild(okButton);
+    _specialButtonRoot.AddChild(okButton);
 
     okButton.SetText("OK");
     okButton.SetSelected(false);
     okButton.Pressed += () => {
-      if (NameLabel.Text.Length == 0) return;
+      if (_name.Text.Length == 0) return;
 
-      SaveController.SavePlayerName(NameLabel.Text);
+      var saveData = Autoload.SaveDataController.GetActiveSaveData();
+      saveData.TrainerName = _name.Text.Trim();
       QueueFree();
+      Autoload.MapController.LoadStartingZone();
     };
   }
 
@@ -88,6 +94,4 @@ public partial class CharacterNameScene : Control {
     "Y",
     "Z",
   };
-
-  private SaveDataController SaveController => this.GetSaveDataManager();
 }

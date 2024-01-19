@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cirra8ngyjla5"]
+[gd_scene load_steps=16 format=3 uid="uid://cirra8ngyjla5"]
 
 [ext_resource type="TileSet" uid="uid://ph17c5q88whb" path="res://Resources/Tilesets/master_tileset.tres" id="1_duash"]
 [ext_resource type="Script" path="res://src/MapData.cs" id="2_tsq17"]
@@ -10,8 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://jxhqv68x21pd" path="res://Scenes/PokeballItem/pokeball_item.tscn" id="8_3elds"]
 [ext_resource type="Resource" uid="uid://c4516oc4k4swo" path="res://Resources/Pokemon/0004_charmander.tres" id="9_mo0t0"]
 [ext_resource type="Resource" uid="uid://bpjq8b61u60r6" path="res://Resources/Pokemon/0007_squirtle.tres" id="10_fsyph"]
+[ext_resource type="Script" path="res://World/pallet_town/MusicArea.cs" id="11_1qoqc"]
+[ext_resource type="AudioStream" uid="uid://drsm0bpanwgnv" path="res://music/1-02. Theme Of Pallet Town.mp3" id="12_df154"]
+[ext_resource type="AudioStream" uid="uid://v1jvoqyskgfg" path="res://music/1-06. The Road To Veridian ~ From Pallet.mp3" id="13_atxb2"]
 
-[node name="TileMap" type="TileMap"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_posul"]
+size = Vector2(314, 314)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uysgj"]
+size = Vector2(274, 672)
+
+[node name="Overworld" type="TileMap"]
 tile_set = ExtResource("1_duash")
 format = 2
 layer_0/name = "walkable"
@@ -49,9 +58,9 @@ position = Vector2(56, 120)
 visible = true
 
 [node name="NPC2" parent="." instance=ExtResource("5_q1q2j")]
+position = Vector2(216, 184)
 
 [node name="Man 1" parent="NPC2" instance=ExtResource("7_ebde5")]
-position = Vector2(200, 216)
 
 [node name="Pokeball Item" parent="." instance=ExtResource("8_3elds")]
 ItemKey = "c8e40fa7-2a7b-4c24-aab0-0060b035b682"
@@ -65,3 +74,22 @@ ItemKey = "16eed7a5-21ea-44c0-8a8a-f9748ea50634"
 position = Vector2(216, 136)
 Pokemon = ExtResource("10_fsyph")
 ItemKey = "bda486fe-e55c-4c9e-8ea1-2a6bdc615bbe"
+
+[node name="Pallet Town" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("11_1qoqc")
+MusicForArea = ExtResource("12_df154")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pallet Town"]
+position = Vector2(155, 155)
+shape = SubResource("RectangleShape2D_posul")
+
+[node name="Road To Viridian From Pallet" type="Area2D" parent="."]
+position = Vector2(0, -344)
+collision_layer = 2
+script = ExtResource("11_1qoqc")
+MusicForArea = ExtResource("13_atxb2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road To Viridian From Pallet"]
+position = Vector2(145, 0)
+shape = SubResource("RectangleShape2D_uysgj")
