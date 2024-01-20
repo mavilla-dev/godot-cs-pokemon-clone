@@ -1,5 +1,11 @@
 # PokemonClone
-PokemonClone is a vertical slice of the Gameboy Pokemon Red/Blue video games dont with Godot 4.2 .NET C#.
+PokemonClone is a vertical slice of the Gameboy Pokemon Red/Blue video games
+
+# Tools
+- Godot 4.2 .NET C#
+- Visual Studio Code
+  - C# Dev Kit
+  - EditorConfig For VS Code
 
 # Controls
 - WASD: Movement
