@@ -15,3 +15,9 @@ PokemonClone is a vertical slice of the Gameboy Pokemon Red/Blue video games don
 - Player grid movement and collision
 - Application Shutdown
 - Menu navigation
+
+# Planned Features
+- Battles
+- Grass triggering random battles
+- Pokemon leveling
+- Pokemon moveset learning
